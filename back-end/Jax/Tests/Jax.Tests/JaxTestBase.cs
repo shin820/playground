@@ -42,6 +42,11 @@ namespace Jax.Tests
             });
 
             LoginAsDefaultTenantAdmin();
+
+            UsingDbContext(context =>
+            {
+                new TestDataBuilder(context).Build();
+            });
         }
 
         protected override void PreInitialize()

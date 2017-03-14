@@ -1,6 +1,8 @@
 ﻿using System.Data.Common;
+using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using Jax.Authorization.Roles;
+using Jax.Entities;
 using Jax.MultiTenancy;
 using Jax.Users;
 
@@ -8,7 +10,7 @@ namespace Jax.EntityFramework
 {
     public class JaxDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
-        //TODO: Define an IDbSet for your Entities...
+        public DbSet<Task> Tasks { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

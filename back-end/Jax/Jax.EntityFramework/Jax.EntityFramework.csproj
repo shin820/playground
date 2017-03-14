@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Jax</RootNamespace>
     <AssemblyName>Jax.EntityFramework</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -124,6 +125,10 @@
     <Compile Include="Migrations\201701271145151_AbpZero_Initial.Designer.cs">
       <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703140819293_AddTaskEntity.cs" />
+    <Compile Include="Migrations\201703140819293_AddTaskEntity.Designer.cs">
+      <DependentUpon>201703140819293_AddTaskEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="JaxDataModule.cs" />
@@ -149,6 +154,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701271145151_AbpZero_Initial.resx">
       <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703140819293_AddTaskEntity.resx">
+      <DependentUpon>201703140819293_AddTaskEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
