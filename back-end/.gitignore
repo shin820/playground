@@ -2,4 +2,4 @@ packages
 
 bin
 obj
-App_Data/Logs/*
+/App_Data/Logs
