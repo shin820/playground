@@ -4,7 +4,11 @@
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WellcomeMessage" value="Welcome to Jax!" />
-    
+
+    <text name="TaskList" value="Task List"/>
+    <text name="TaskStatus_Open" value="Open"/>
+    <text name="TaskStatus_Completed" value="Completed"/>
+
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />
 

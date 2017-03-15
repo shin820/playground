@@ -52,6 +52,7 @@ namespace Jax.Web
                         L("TaskList"),
                         url: "Tasks",
                         icon: "fa fa-tasks"
+                        //requiredPermissionName: PermissionNames.Pages_Tasks
                         )
                 );
         }
