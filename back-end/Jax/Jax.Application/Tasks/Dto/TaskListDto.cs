@@ -21,5 +21,8 @@ namespace Jax.Tasks.Dto
         public DateTime CreationTime { get; set; }
 
         public TaskStatus Status { get; set; }
+
+        public long? AssignedUserId { get; set; }
+        public string AssignedUserName { get; set; }
     }
 }

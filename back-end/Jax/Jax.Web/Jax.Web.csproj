@@ -408,6 +408,8 @@
     <Content Include="css\main.css.map">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="Views\Tasks\create.js" />
+    <Content Include="Views\Tasks\index.js" />
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
@@ -508,6 +510,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\Task\CreateTaskViewModel.cs" />
     <Compile Include="Models\Task\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\JaxWebViewPageBase.cs" />
@@ -533,6 +536,7 @@
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Tasks\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

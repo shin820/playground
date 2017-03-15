@@ -11,6 +11,7 @@ namespace Jax.Tasks
 {
     public interface ITaskAppService : IApplicationService
     {
-        ListResultDto<TaskListDto> GetAll(GetAllTasksInput input);
+        Task<ListResultDto<TaskListDto>> GetAll(GetAllTasksInput input);
+        Task Create(CreateTaskInput input);
     }
 }

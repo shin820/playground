@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using Jax.Authorization;
 using Jax.Users.Dto;
 using Microsoft.AspNet.Identity;

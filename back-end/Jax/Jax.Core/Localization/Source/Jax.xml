@@ -8,6 +8,13 @@
     <text name="TaskList" value="Task List"/>
     <text name="TaskStatus_Open" value="Open"/>
     <text name="TaskStatus_Completed" value="Completed"/>
+    <text name="AllTasks" value="All Tasks"/>
+    <text name="Unassigned" value="Unassigned"/>
+    <text name="AddNew" value="Add New"/>
+    <text name="NewTask" value="New Task"/>
+    <text name="Title" value="Title"/>
+    <text name="Description" value="Description"/>
+    <text name="AssignedUser" value="Assigned User"/>
 
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />

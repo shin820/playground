@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Jax.EntityFramework;
-using Task=Jax.Entities.Task;
+using Jax.Users;
+using Microsoft.AspNet.Identity;
+using Task = Jax.Entities.Task;
 using TaskStatus = Jax.Entities.TaskStatus;
 
 namespace Jax.Tests
@@ -19,9 +21,22 @@ namespace Jax.Tests
 
         public void Build()
         {
+            var neo = new User
+            {
+                UserName = "Neo",
+                Name = "Neo",
+                Surname = "Neo",
+                EmailAddress = "Neo@neo.com",
+                IsEmailConfirmed = true,
+                TenantId = 1,
+                Password = new PasswordHasher().HashPassword(User.DefaultPassword)
+            };
+            _context.Users.Add(neo);
+            _context.SaveChanges();
+
             _context.Tasks.AddRange(new List<Task>
             {
-                new Task("Follow the white rabbit", "Follow the white rabbit in order to know the reality."),
+                new Task("Follow the white rabbit", "Follow the white rabbit in order to know the reality.", neo.Id),
                 new Task("Clean your room") {Status = TaskStatus.Completed}
             });
         }

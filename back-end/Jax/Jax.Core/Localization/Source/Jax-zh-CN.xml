@@ -4,6 +4,17 @@
     <text name="HomePage" value="主页" />
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 Jax!" />
+
+    <text name="TaskList" value="任务列表"/>
+    <text name="TaskStatus_Open" value="打开"/>
+    <text name="TaskStatus_Completed" value="完成"/>
+    <text name="AllTasks" value="所有任务"/>
+    <text name="Unassigned" value="未指派"/>
+    <text name="AddNew" value="新增"/>
+    <text name="NewTask" value="新建任务"/>
+    <text name="Title" value="标题"/>
+    <text name="Description" value="描述"/>
+    <text name="AssignedUser" value="指派的用户"/>
     
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />

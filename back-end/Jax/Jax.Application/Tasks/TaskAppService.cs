@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,24 @@ namespace Jax.Tasks
             _taskRepository = taskRepository;
         }
 
-        public ListResultDto<TaskListDto> GetAll(GetAllTasksInput input)
+        public async Task<ListResultDto<TaskListDto>> GetAll(GetAllTasksInput input)
         {
-            var tasks = _taskRepository
+            var tasks = await _taskRepository
                 .GetAll()
+                .Include(t => t.AssignedUser)
                 .WhereIf(input.Status.HasValue, t => t.Status == input.Status.Value)
                 .OrderByDescending(t => t.CreationTime)
-                .ToList();
+                .ToListAsync();
 
             return new ListResultDto<TaskListDto>(
                 Mapper.Map<List<TaskListDto>>(tasks)
                 );
+        }
+
+        public async System.Threading.Tasks.Task Create(CreateTaskInput input)
+        {
+            var task = Mapper.Map<Task>(input);
+            await _taskRepository.InsertAsync(task);
         }
     }
 }
