@@ -152,6 +152,10 @@
     <Compile Include="Migrations\201703150835221_Add_AssignedUser_To_Tasks.Designer.cs">
       <DependentUpon>201703150835221_Add_AssignedUser_To_Tasks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703160954091_Add_PermissionDefinitions.cs" />
+    <Compile Include="Migrations\201703160954091_Add_PermissionDefinitions.Designer.cs">
+      <DependentUpon>201703160954091_Add_PermissionDefinitions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="JaxDataModule.cs" />
@@ -183,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703150835221_Add_AssignedUser_To_Tasks.resx">
       <DependentUpon>201703150835221_Add_AssignedUser_To_Tasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703160954091_Add_PermissionDefinitions.resx">
+      <DependentUpon>201703160954091_Add_PermissionDefinitions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

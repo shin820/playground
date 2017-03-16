@@ -114,6 +114,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\JaxTenantAuthorizationProvider.cs" />
+    <Compile Include="Entities\PermissionDefinition.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TaskStatus.cs" />
     <Compile Include="JaxConsts.cs" />

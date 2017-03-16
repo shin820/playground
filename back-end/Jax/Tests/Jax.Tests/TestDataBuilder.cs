@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Jax.Entities;
 using Jax.EntityFramework;
 using Jax.Users;
 using Microsoft.AspNet.Identity;

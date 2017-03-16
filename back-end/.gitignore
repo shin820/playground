@@ -2,4 +2,4 @@ packages
 
 bin
 obj
-/Jax/Jax.Web/App_Data/Logs
+Logs

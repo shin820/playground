@@ -11,6 +11,7 @@ namespace Jax.EntityFramework
     public class JaxDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<PermissionDefinition> PermissionDefinitions { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
