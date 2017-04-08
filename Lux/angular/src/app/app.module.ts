@@ -22,6 +22,7 @@ import { UsersComponent } from '@app/users/users.component';
 import { CreateUserModalComponent } from '@app/users/create-user-modal.component';
 import { TenantsComponent } from '@app/tenants/tenants.component';
 import { CreateTenantModalComponent } from '@app/tenants/create-tenant-modal.component';
+import { RolesComponent } from './roles/roles.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { CreateTenantModalComponent } from '@app/tenants/create-tenant-modal.com
         UsersComponent,
         CreateUserModalComponent,
         TenantsComponent,
-        CreateTenantModalComponent
+        CreateTenantModalComponent,
+        RolesComponent
     ],
     imports: [
         CommonModule,

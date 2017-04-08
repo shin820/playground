@@ -173,6 +173,50 @@ export class RoleServiceProxy {
         return null;
     }
 
+    /**
+     * @return Success
+     */
+    getRoles(): Observable<ListResultDtoOfRoleListDto> {
+        let url_ = this.baseUrl + "/api/services/app/Role/GetRoles";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processGetRoles(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processGetRoles(response));
+                } catch (e) {
+                    return <Observable<ListResultDtoOfRoleListDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<ListResultDtoOfRoleListDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processGetRoles(response: Response): ListResultDtoOfRoleListDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: ListResultDtoOfRoleListDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ListResultDtoOfRoleListDto.fromJS(resultData200) : new ListResultDtoOfRoleListDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
     protected throwException(message: string, status: number, response: string, result?: any): any {
         if(result !== null && result !== undefined)
             throw result;
@@ -862,6 +906,76 @@ export class UpdateRolePermissionsInput {
     clone() {
         const json = this.toJSON();
         return new UpdateRolePermissionsInput(JSON.parse(json));
+    }
+}
+
+export class ListResultDtoOfRoleListDto { 
+    items: RoleListDto[];
+    constructor(data?: any) {
+        if (data !== undefined) {
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(RoleListDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ListResultDtoOfRoleListDto {
+        return new ListResultDtoOfRoleListDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJS());
+        }
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new ListResultDtoOfRoleListDto(JSON.parse(json));
+    }
+}
+
+export class RoleListDto { 
+    name: string; 
+    displayName: string; 
+    id: number;
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.name = data["name"] !== undefined ? data["name"] : null;
+            this.displayName = data["displayName"] !== undefined ? data["displayName"] : null;
+            this.id = data["id"] !== undefined ? data["id"] : null;
+        }
+    }
+
+    static fromJS(data: any): RoleListDto {
+        return new RoleListDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["name"] = this.name !== undefined ? this.name : null;
+        data["displayName"] = this.displayName !== undefined ? this.displayName : null;
+        data["id"] = this.id !== undefined ? this.id : null;
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new RoleListDto(JSON.parse(json));
     }
 }
 

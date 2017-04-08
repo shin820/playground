@@ -1,0 +1,23 @@
+<div>
+    <h1>{{l('Roles')}}</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <!--<button data-toggle="modal" class="btn btn-primary pull-right" (click)="createUser()"><i class="fa fa-plus"></i> {{l('CreateNewUser')}}</button>-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{l('Name')}}</th>
+                    <th>{{l('DisplayName')}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let role of roles">
+                    <td>{{role.name}}</td>
+                    <td>{{role.displayName}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--<createUserModal #createUserModal (modalSave)="getUsers()"></createUserModal>-->

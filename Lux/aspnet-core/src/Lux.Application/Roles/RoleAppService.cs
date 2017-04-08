@@ -3,11 +3,14 @@ using System.Threading.Tasks;
 using Abp.Authorization;
 using Lux.Authorization.Roles;
 using Lux.Roles.Dto;
+using Abp.Application.Services.Dto;
+using System.Collections.Generic;
+using Abp.AutoMapper;
 
 namespace Lux.Roles
 {
     /* THIS IS JUST A SAMPLE. */
-    public class RoleAppService : LuxAppServiceBase,IRoleAppService
+    public class RoleAppService : LuxAppServiceBase, IRoleAppService
     {
         private readonly RoleManager _roleManager;
         private readonly IPermissionManager _permissionManager;
@@ -27,6 +30,15 @@ namespace Lux.Roles
                 .ToList();
 
             await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
+        }
+
+        public ListResultDto<RoleListDto> GetRoles()
+        {
+            var roles = _roleManager.Roles.ToList();
+
+            return new ListResultDto<RoleListDto>(
+                roles.MapTo<List<RoleListDto>>()
+                );
         }
     }
 }
