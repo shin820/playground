@@ -7,6 +7,7 @@ using Tweetinvi;
 using Tweetinvi.Models;
 using System.IO;
 using Tweetinvi.Parameters;
+using System.Linq;
 
 namespace ApiIntergrationTest.Twitter
 {
@@ -104,6 +105,17 @@ namespace ApiIntergrationTest.Twitter
             // assert
             ITweet favouritedTweet = Tweet.GetTweet(origin.Id);
             Assert.Equal(1, favouritedTweet.FavoriteCount);
+        }
+
+        [Fact]
+        public void ShouldSendPrivateMessage()
+        {
+            Message.PublishMessage("hello shin (api test)", User.GetUserFromScreenName("shin___liu"));
+            var messsage = Message.GetLatestMessagesSent(1).First();
+
+            Assert.Equal("hello shin (api test)", messsage.Text);
+
+            Message.DestroyMessage(messsage);
         }
     }
 }
