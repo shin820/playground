@@ -23,6 +23,9 @@ import { CreateUserModalComponent } from '@app/users/create-user-modal.component
 import { TenantsComponent } from '@app/tenants/tenants.component';
 import { CreateTenantModalComponent } from '@app/tenants/create-tenant-modal.component';
 import { RolesComponent } from './roles/roles.component';
+import { ConversationsComponent } from './conversations/conversations.component';
+import { ConversationListComponent } from './conversations/conversation-list/conversation-list.component';
+import { ConversationMessageListComponent } from './conversations/conversation-message-list/conversation-message-list.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +36,10 @@ import { RolesComponent } from './roles/roles.component';
         CreateUserModalComponent,
         TenantsComponent,
         CreateTenantModalComponent,
-        RolesComponent
+        RolesComponent,
+        ConversationsComponent,
+        ConversationListComponent,
+        ConversationMessageListComponent
     ],
     imports: [
         CommonModule,
