@@ -34,7 +34,6 @@ namespace ApiIntergrationTest.Twitter
         }
 
         [Fact]
-
         public void ShouldPublishTwit()
         {
             ITweet myTweet = Tweet.PublishTweet("Test publish tweet.");
@@ -44,7 +43,6 @@ namespace ApiIntergrationTest.Twitter
         }
 
         [Fact]
-
         public void ShouldPublishTwitWithImage()
         {
             // publish tweet with image

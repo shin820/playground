@@ -1,0 +1,44 @@
+@model TwitterTest.Controllers.FacebookController.UserInfoResult
+@{
+    ViewData["Title"] = "UserTokenRequestCallback";
+}
+
+<h2>UserTokenRequestCallback</h2>
+
+<h3>User Access Token</h3>
+<p>
+    <ul>
+        <li>Access Token : @Model.UserToken.AccessToken</li>
+        <li>Type : @Model.UserToken.Type</li>
+        <li>Expires In : @Model.UserToken.ExpiresIn</li>
+    </ul>
+</p>
+
+<h3>Application Access Token</h3>
+<p>
+    <ul>
+        <li>Access Token : @Model.ApplicationToken.AccessToken</li>
+        <li>Type : @Model.ApplicationToken.Type</li>
+        <li>Expires In : @Model.ApplicationToken.ExpiresIn</li>
+    </ul>
+</p>
+
+<h3>User Pages</h3>
+<table>
+    
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Category</td>
+        <td>Access Token</td>
+    </tr>
+    @foreach (var page in Model.Pages)
+    {
+        <tr>
+            <td>@page.Id</td>
+            <td>@page.Name</td>
+            <td>@page.Category</td>
+            <td>@page.AccessToken</td>
+        </tr>
+    }
+</table>
