@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div>
+        <p>Chat Room</p>
+        <ul id="discussion">
+
+        </ul>
+    </div>
+    <textarea id="message"></textarea>
+    <input type="button" id="btnSendMsg" value="Send" />
+    <input type="hidden" id="sender" />
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2-preview1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var chat = $.connection.chatHub;
+            chat.client.receiveNewMessage = function (sender, message) {
+                $('#discussion').append('<li><strong>' + htmlEncode(sender)
+                    + '</strong>: ' + htmlEncode(message) + '</li>');
+            };
+            $('#sender').val(prompt('Enter your name:', ''));
+            $('#message').focus();
+
+            $.connection.hub.start().done(function () {
+                $('#btnSendMsg').click(function () {
+                    chat.server.send($('#sender').val(), $('#message').val());
+                    $('#message').val('').focus();
+                });
+            });
+        });
+
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}
