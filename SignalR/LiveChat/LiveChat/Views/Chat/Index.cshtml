@@ -3,16 +3,28 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container">
-    <div>
-        <p>Chat Room</p>
-        <ul id="discussion">
-
-        </ul>
+<div class="container-fluid">
+    <div class="row">
+        <h2>Chat</h2>
     </div>
-    <textarea id="message"></textarea>
-    <input type="button" id="btnSendMsg" value="Send" />
-    <input type="hidden" id="sender" />
+    <div class="row">
+        <label>Your Name</label>
+        <input type="text" id="sender"/>
+        <input type="button" id="connect" value="Connect" class="btn-primary" />
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-8">
+                <div id="discussion" class="center-block"></div>
+                <div id="msgDiv" class="row">
+                    <textarea id="message" class="form-control"></textarea>
+                    <input type="button" id="btnSendMsg" value="Send" class="btn-primary"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts {
@@ -20,18 +32,36 @@
     <script src="~/signalr/hubs"></script>
     <script>
         $(function () {
+            $('#msgDiv').hide();
             var chat = $.connection.chatHub;
             chat.client.receiveNewMessage = function (sender, message) {
-                $('#discussion').append('<li><strong>' + htmlEncode(sender)
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
+                $('#discussion').append('<p><strong>' + htmlEncode(sender)
+                    + '</strong>: ' + htmlEncode(message) + '</p>');
             };
-            $('#sender').val(prompt('Enter your name:', ''));
-            $('#message').focus();
 
-            $.connection.hub.start().done(function () {
-                $('#btnSendMsg').click(function () {
-                    chat.server.send($('#sender').val(), $('#message').val());
-                    $('#message').val('').focus();
+            $('#name').focus();
+
+            $('#connect').click(function () {
+                var $sender = $('#sender');
+                if (!$sender.val())
+                {
+                    $sender.addClass('alert-danger');
+                    return;
+                }
+                else
+                {
+                    $sender.removeClass('alert-danger');
+                }
+
+                $('#connect').hide();
+                $('#sender').prop('disabled', true);
+                $('#msgDiv').show();
+
+                $.connection.hub.start().done(function () {
+                    $('#btnSendMsg').click(function () {
+                        chat.server.send($('#sender').val(), $('#message').val());
+                        $('#message').val('').focus();
+                    });
                 });
             });
         });
