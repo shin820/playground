@@ -10,8 +10,12 @@ namespace LiveChat.Hubs
     {
         public void Send(string sender, string message)
         {
-            // Call the broadcastMessage method to update clients.
             Clients.All.receiveNewMessage(sender, message);
+        }
+
+        public void Join(string name)
+        {
+            Clients.All.joinChat(name);
         }
     }
 }

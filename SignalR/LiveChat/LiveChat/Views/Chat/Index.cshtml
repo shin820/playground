@@ -8,19 +8,26 @@
         <h2>Chat</h2>
     </div>
     <div class="row">
-        <label>Your Name</label>
-        <input type="text" id="sender"/>
-        <input type="button" id="connect" value="Connect" class="btn-primary" />
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="sender">Your Name</label>
+                <input type="text" id="sender" />
+            </div>
+            <button id="connect" type="button" class="btn btn-default">Connect</button>
+        </form>
     </div>
     <div class="row">
         <div class="container">
             <div class="col-md-4">
+                <ul>
+
+                </ul>
             </div>
             <div class="col-md-8">
-                <div id="discussion" class="center-block"></div>
+                <div id="discussion"></div>
                 <div id="msgDiv" class="row">
-                    <textarea id="message" class="form-control"></textarea>
-                    <input type="button" id="btnSendMsg" value="Send" class="btn-primary"/>
+                    <textarea id="message" class="form-control" rows="3" cols="5"></textarea>
+                    <button type="button" id="btnSendMsg" value="Send" class="btn btn-primary" style="margin-top:5px;">Send</button>
                 </div>
             </div>
         </div>
@@ -35,11 +42,14 @@
             $('#msgDiv').hide();
             var chat = $.connection.chatHub;
             chat.client.receiveNewMessage = function (sender, message) {
-                $('#discussion').append('<p><strong>' + htmlEncode(sender)
-                    + '</strong>: ' + htmlEncode(message) + '</p>');
+                $('#discussion').append("<p class='text-primary'><strong>" + htmlEncode(sender)
+                    + "</strong>: " + htmlEncode(message) + "</p>");
+            };
+            chat.client.joinChat = function (name) {
+                $('#discussion').append("<p class='text-muted'>" + name +" joined this chat room .</p>");
             };
 
-            $('#name').focus();
+            $('#sender').focus();
 
             $('#connect').click(function () {
                 var $sender = $('#sender');
@@ -58,8 +68,11 @@
                 $('#msgDiv').show();
 
                 $.connection.hub.start().done(function () {
+                    var sender = $('#sender').val();
+                    chat.server.join(sender);
+
                     $('#btnSendMsg').click(function () {
-                        chat.server.send($('#sender').val(), $('#message').val());
+                        chat.server.send(sender, $('#message').val());
                         $('#message').val('').focus();
                     });
                 });
