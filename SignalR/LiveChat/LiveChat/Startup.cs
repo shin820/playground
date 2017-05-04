@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace LiveChat
     {
         public void Configuration(IAppBuilder app)
         {
+            //var hubConfiguration = new HubConfiguration();
+            //hubConfiguration.EnableDetailedErrors = true;
+            //hubConfiguration.EnableJavaScriptProxies = false;
+            //app.MapSignalR("/signalr", hubConfiguration);
+
             app.MapSignalR();
         }
     }

@@ -41,11 +41,11 @@
         $(function () {
             $('#msgDiv').hide();
             var chat = $.connection.chatHub;
-            chat.client.receiveNewMessage = function (sender, message) {
+            chat.client.newMessage = function (sender, message) {
                 $('#discussion').append("<p class='text-primary'><strong>" + htmlEncode(sender)
                     + "</strong>: " + htmlEncode(message) + "</p>");
             };
-            chat.client.joinChat = function (name) {
+            chat.client.join = function (name) {
                 $('#discussion').append("<p class='text-muted'>" + name +" joined this chat room .</p>");
             };
 
