@@ -15,6 +15,11 @@ namespace LiveChatApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        public class Test
+        {
+            public string Id { get; set; }
+        }
+
         // GET api/values/5
         public string Get(int id)
         {
