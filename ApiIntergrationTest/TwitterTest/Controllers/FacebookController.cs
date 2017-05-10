@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-using static TwitterTest.FacebookClient;
+using static FacebookSdk.FacebookClient;
+using FacebookSdk;
 
 namespace TwitterTest.Controllers
 {
@@ -23,7 +24,7 @@ namespace TwitterTest.Controllers
 
         public IActionResult UserTokenRequest()
         {
-            var authUrl = $"https://www.facebook.com/v2.9/dialog/oauth?client_id={CLIENT_ID}&redirect_uri={AUTH_REDIRECT_URI}&scope=manage_pages";
+            var authUrl = $"https://www.facebook.com/v2.9/dialog/oauth?client_id={CLIENT_ID}&redirect_uri={AUTH_REDIRECT_URI}&scope=manage_pages,publish_pages,pages_messaging,pages_messaging_phone_number,read_page_mailboxes,pages_show_list";
             return Redirect(authUrl);
         }
 

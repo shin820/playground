@@ -1,0 +1,64 @@
+﻿@using X.PagedList.Mvc;
+@using X.PagedList;
+@model IEnumerable<MvcDemo_CannedMessage.Entity.CannedMessage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shortcuts)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shortcuts)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+<table>
+    <tr>
+        <td>@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)</td>
+        <td width="20"></td>
+        <td>Total Items : @Html.DisplayFor(m=>((IPagedList)m).TotalItemCount)</td>
+        <td width="20"></td>
+        <td>Page Size : @Html.DisplayFor(m => ((IPagedList)m).PageSize)</td>
+        <td width="20"></td>
+        <td>Current Page Items : @ViewBag.CurrentPageItems</td>
+    </tr>
+</table>
