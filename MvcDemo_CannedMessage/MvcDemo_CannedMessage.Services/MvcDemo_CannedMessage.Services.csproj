@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FBE422DE-11A2-4D3F-B4AE-88BD0AE70823}</ProjectGuid>
+    <ProjectGuid>{F28CD5C5-4086-4C87-AC51-8FD5179AB764}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MvcDemo_CannedMessage.Repository</RootNamespace>
-    <AssemblyName>MvcDemo_CannedMessage.Repository</AssemblyName>
+    <RootNamespace>MvcDemo_CannedMessage.Services</RootNamespace>
+    <AssemblyName>MvcDemo_CannedMessage.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,14 +36,7 @@
     <Reference Include="Castle.Windsor, Version=3.4.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.3.4.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,38 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="IRepositoryBase.cs" />
-    <Compile Include="Migrations\201705100211543_Initial.cs" />
-    <Compile Include="Migrations\201705100211543_Initial.Designer.cs">
-      <DependentUpon>201705100211543_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705100218413_update_entity.cs" />
-    <Compile Include="Migrations\201705100218413_update_entity.Designer.cs">
-      <DependentUpon>201705100218413_update_entity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="AppServices\CannedMessageAppService.cs" />
+    <Compile Include="AppServices\ICannedMessageAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CannedMessageRepository.cs" />
-    <Compile Include="RepositoryBase.cs" />
-    <Compile Include="RepositoryIocFacility.cs" />
-    <Compile Include="RepositoryIocInstaller.cs" />
+    <Compile Include="ServiceIocInstaller.cs" />
+    <Compile Include="ServiceIocFacility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705100211543_Initial.resx">
-      <DependentUpon>201705100211543_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705100218413_update_entity.resx">
-      <DependentUpon>201705100218413_update_entity.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\MvcDemo_CannedMessage.EF\MvcDemo_CannedMessage.Repository.csproj">
+      <Project>{fbe422de-11a2-4d3f-b4ae-88bd0ae70823}</Project>
+      <Name>MvcDemo_CannedMessage.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvcDemo_CannedMessage.Entity\MvcDemo_CannedMessage.Entity.csproj">
-      <Project>{03608779-9b2c-40f0-88cf-24b6a8938941}</Project>
+      <Project>{03608779-9B2C-40F0-88CF-24B6A8938941}</Project>
       <Name>MvcDemo_CannedMessage.Entity</Name>
     </ProjectReference>
   </ItemGroup>

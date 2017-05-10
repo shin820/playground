@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDemo_CannedMessage.Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDemo_CannedMessage.Entity", "MvcDemo_CannedMessage.Entity\MvcDemo_CannedMessage.Entity.csproj", "{03608779-9B2C-40F0-88CF-24B6A8938941}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDemo_CannedMessage.Services", "MvcDemo_CannedMessage.Services\MvcDemo_CannedMessage.Services.csproj", "{F28CD5C5-4086-4C87-AC51-8FD5179AB764}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{03608779-9B2C-40F0-88CF-24B6A8938941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03608779-9B2C-40F0-88CF-24B6A8938941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03608779-9B2C-40F0-88CF-24B6A8938941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F28CD5C5-4086-4C87-AC51-8FD5179AB764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F28CD5C5-4086-4C87-AC51-8FD5179AB764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F28CD5C5-4086-4C87-AC51-8FD5179AB764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F28CD5C5-4086-4C87-AC51-8FD5179AB764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

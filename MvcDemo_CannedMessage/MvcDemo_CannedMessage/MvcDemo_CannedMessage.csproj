@@ -236,13 +236,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcDemo_CannedMessage.EF\MvcDemo_CannedMessage.Repository.csproj">
-      <Project>{fbe422de-11a2-4d3f-b4ae-88bd0ae70823}</Project>
-      <Name>MvcDemo_CannedMessage.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MvcDemo_CannedMessage.Entity\MvcDemo_CannedMessage.Entity.csproj">
       <Project>{03608779-9b2c-40f0-88cf-24b6a8938941}</Project>
       <Name>MvcDemo_CannedMessage.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcDemo_CannedMessage.Services\MvcDemo_CannedMessage.Services.csproj">
+      <Project>{f28cd5c5-4086-4c87-ac51-8fd5179ab764}</Project>
+      <Name>MvcDemo_CannedMessage.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

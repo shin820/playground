@@ -6,27 +6,26 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MvcDemo_CannedMessage.EF;
 using X.PagedList;
 using MvcDemo_CannedMessage.Models;
 using MvcDemo_CannedMessage.Entity;
-using MvcDemo_CannedMessage.Repository.Repositories;
+using MvcDemo_CannedMessage.Services.AppServices;
 
 namespace MvcDemo_CannedMessage.Controllers
 {
     public class CannedMessagesController : Controller
     {
-        private ICannedMessageRepository _repository;
+        private ICannedMessageAppService _appService;
 
-        public CannedMessagesController(ICannedMessageRepository repository)
+        public CannedMessagesController(ICannedMessageAppService appService)
         {
-            _repository = repository;
+            _appService = appService;
         }
 
         // GET: CannedMessages
         public ActionResult Index(CannedMessageListInput input)
         {
-            var cannedMessages = _repository.FindAll().OrderByDescending(t => t.Id);
+            var cannedMessages = _appService.FindAll().OrderByDescending(t => t.Id);
             var pageList = cannedMessages.ToPagedList(input.Page.Value, input.PageSize.Value);
             ViewBag.CurrentPageItems = pageList.Count();
             return View(pageList);
@@ -39,7 +38,7 @@ namespace MvcDemo_CannedMessage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CannedMessage cannedMessage = _repository.Find(id.Value);
+            CannedMessage cannedMessage = _appService.Find(id.Value);
             if (cannedMessage == null)
             {
                 return HttpNotFound();
@@ -62,7 +61,7 @@ namespace MvcDemo_CannedMessage.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.Insert(cannedMessage);
+                _appService.Insert(cannedMessage);
                 return RedirectToAction("Index");
             }
 
@@ -76,7 +75,7 @@ namespace MvcDemo_CannedMessage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CannedMessage cannedMessage = _repository.Find(id.Value);
+            CannedMessage cannedMessage = _appService.Find(id.Value);
             if (cannedMessage == null)
             {
                 return HttpNotFound();
@@ -91,7 +90,7 @@ namespace MvcDemo_CannedMessage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Message,Shortcuts")] CannedMessage cannedMessage)
         {
-            CannedMessage message = _repository.Find(cannedMessage.Id);
+            CannedMessage message = _appService.Find(cannedMessage.Id);
             if (message == null)
             {
                 return HttpNotFound();
@@ -102,7 +101,7 @@ namespace MvcDemo_CannedMessage.Controllers
                 message.Name = cannedMessage.Name;
                 message.Message = cannedMessage.Message;
                 message.Shortcuts = cannedMessage.Shortcuts;
-                _repository.Update(message);
+                _appService.Update(message);
                 return RedirectToAction("Index");
             }
             return View(cannedMessage);
@@ -115,7 +114,7 @@ namespace MvcDemo_CannedMessage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CannedMessage cannedMessage = _repository.Find(id.Value);
+            CannedMessage cannedMessage = _appService.Find(id.Value);
             if (cannedMessage == null)
             {
                 return HttpNotFound();
@@ -128,8 +127,8 @@ namespace MvcDemo_CannedMessage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CannedMessage cannedMessage = _repository.Find(id);
-            _repository.Delete(cannedMessage);
+            CannedMessage cannedMessage = _appService.Find(id);
+            _appService.Delete(cannedMessage);
             return RedirectToAction("Index");
         }
     }

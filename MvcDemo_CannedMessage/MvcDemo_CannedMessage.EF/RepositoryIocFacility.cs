@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MvcDemo_CannedMessage.Repository
 {
-    public class RepositoryFacility : AbstractFacility
+    public class RepositoryIocFacility : AbstractFacility
     {
         protected override void Init()
         {
@@ -22,12 +22,9 @@ namespace MvcDemo_CannedMessage.Repository
                             Component.For(typeof(IRepositoryBase<>))
                                      .ImplementedBy(typeof(RepositoryBase<>))
                                      .LifestylePerWebRequest(),
-                                //Component.For<ICannedMessageRepository>()
-                                //         .ImplementedBy<CannedMessageRepository>()
-                                //         .LifestylePerWebRequest()
-                                Classes.FromThisAssembly().Pick().If(t => t.Name.EndsWith("Repository"))
-                                     .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                                     .WithService.DefaultInterfaces().LifestylePerWebRequest()
+                            Classes.FromThisAssembly().Pick().If(t => t.Name.EndsWith("Repository"))
+                                    .Configure(configurer => configurer.Named(configurer.Implementation.Name))
+                                    .WithService.DefaultInterfaces().LifestylePerWebRequest()
                                 );
         }
     }

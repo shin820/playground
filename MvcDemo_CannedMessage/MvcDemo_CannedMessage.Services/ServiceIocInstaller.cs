@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace MvcDemo_CannedMessage.Repository
 {
-    public static class RepositoryInstaller
+    public static class ServiceIocInstaller
     {
         public static void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.AddFacility<RepositoryFacility>();
+            container.AddFacility<RepositoryIocFacility>();
+            container.AddFacility<ServiceIocFacility>();
         }
     }
 }
