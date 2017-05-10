@@ -26,6 +26,7 @@ namespace MvcDemo_CannedMessage.Controllers
         // GET: CannedMessages
         public ActionResult Index(CannedMessageListInput input)
         {
+            throw new Exception("Test");
             var cannedMessages = _appService.FindAll();
             var pageList = cannedMessages.ToPagedList(input.Page.Value, input.PageSize.Value);
             ViewBag.CurrentPageItems = pageList.Count();
