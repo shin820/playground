@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using MvcDemo_CannedMessage.Repository;
+using MvcDemo_CannedMessage.Service;
 
 namespace MvcDemo_CannedMessage.Core
 {

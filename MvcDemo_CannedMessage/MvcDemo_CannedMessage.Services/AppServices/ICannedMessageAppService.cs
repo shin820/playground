@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using MvcDemo_CannedMessage.Entity;
 
-namespace MvcDemo_CannedMessage.Services.AppServices
+namespace MvcDemo_CannedMessage.Service.AppServices
 {
     public interface ICannedMessageAppService
     {

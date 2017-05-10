@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MvcDemo_CannedMessage.Repository
+namespace MvcDemo_CannedMessage.Service
 {
     public class ServiceIocFacility : AbstractFacility
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MvcDemo_CannedMessage.Services.AppServices
+namespace MvcDemo_CannedMessage.Service.AppServices
 {
     public class CannedMessageAppService : ICannedMessageAppService
     {
@@ -23,7 +23,7 @@ namespace MvcDemo_CannedMessage.Services.AppServices
 
         public IQueryable<CannedMessage> FindAll()
         {
-            return _repository.FindAll();
+            return _repository.FindAll().OrderByDescending(t=>t.Id);
         }
 
         public void Delete(CannedMessage message)

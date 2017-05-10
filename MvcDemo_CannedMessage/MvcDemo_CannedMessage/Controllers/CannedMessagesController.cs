@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using X.PagedList;
 using MvcDemo_CannedMessage.Models;
 using MvcDemo_CannedMessage.Entity;
-using MvcDemo_CannedMessage.Services.AppServices;
+using MvcDemo_CannedMessage.Service.AppServices;
+using AutoMapper;
 
 namespace MvcDemo_CannedMessage.Controllers
 {
@@ -25,7 +26,7 @@ namespace MvcDemo_CannedMessage.Controllers
         // GET: CannedMessages
         public ActionResult Index(CannedMessageListInput input)
         {
-            var cannedMessages = _appService.FindAll().OrderByDescending(t => t.Id);
+            var cannedMessages = _appService.FindAll();
             var pageList = cannedMessages.ToPagedList(input.Page.Value, input.PageSize.Value);
             ViewBag.CurrentPageItems = pageList.Count();
             return View(pageList);

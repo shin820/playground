@@ -7,8 +7,8 @@
     <ProjectGuid>{F28CD5C5-4086-4C87-AC51-8FD5179AB764}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MvcDemo_CannedMessage.Services</RootNamespace>
-    <AssemblyName>MvcDemo_CannedMessage.Services</AssemblyName>
+    <RootNamespace>MvcDemo_CannedMessage.Service</RootNamespace>
+    <AssemblyName>MvcDemo_CannedMessage.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
