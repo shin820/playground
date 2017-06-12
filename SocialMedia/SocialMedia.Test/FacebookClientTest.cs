@@ -17,8 +17,9 @@ namespace SocialMedia.Test
 
             //var feeds = fb.Get("me/feed");
 
-            dynamic userPic = fb.Get("/121361878431739/picture?redirect=false");
-            string url = userPic.data.url;
+            dynamic userInfo = fb.Get("/121361878431739?fields=id,name,first_name,last_name,picture,gender,email,location");
+
+            dynamic tagged = fb.Get("/1974003879498745/tagged?fields=created_time,message,from{id,name,picture},to");
 
             //// 添加Post
             //dynamic parameters = new ExpandoObject();
