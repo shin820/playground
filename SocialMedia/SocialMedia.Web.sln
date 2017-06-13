@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Web", "SocialMedia.Web\SocialMedia.Web.csproj", "{4DE649AA-1930-4C86-BE79-0D922428F2D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Facebook", "..\SocialMedia.Facebook\SocialMedia.Facebook.csproj", "{5BFAE9D6-8049-4395-B56F-937FBB3E852B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Twitter", "SocialMedia.Twitter\SocialMedia.Twitter.csproj", "{0AC4942E-4C2E-4DFB-9C15-194F92536C61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Test", "SocialMedia.Test\SocialMedia.Test.csproj", "{299342B2-A082-4716-9A11-4EB75FE6D7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Facebook", "SocialMedia.Facebook\SocialMedia.Facebook.csproj", "{5BFAE9D6-8049-4395-B56F-937FBB3E852B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{4DE649AA-1930-4C86-BE79-0D922428F2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE649AA-1930-4C86-BE79-0D922428F2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE649AA-1930-4C86-BE79-0D922428F2D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AC4942E-4C2E-4DFB-9C15-194F92536C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AC4942E-4C2E-4DFB-9C15-194F92536C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AC4942E-4C2E-4DFB-9C15-194F92536C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{299342B2-A082-4716-9A11-4EB75FE6D7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{299342B2-A082-4716-9A11-4EB75FE6D7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{299342B2-A082-4716-9A11-4EB75FE6D7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BFAE9D6-8049-4395-B56F-937FBB3E852B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

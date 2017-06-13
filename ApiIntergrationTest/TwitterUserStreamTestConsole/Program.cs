@@ -28,6 +28,8 @@ namespace TwitterUserStreamTestConsole
             stream.MessageReceived += (sender, args) =>
             {
                 Console.WriteLine($"[{args.Message.CreatedAt}] {args.Message.SenderScreenName} : {args.Message.Text}");
+                var user = User.GetUserFromScreenName(args.Message.SenderScreenName);
+                var b = user;
             };
 
             stream.MessageSent += (sender, args) =>
@@ -38,6 +40,8 @@ namespace TwitterUserStreamTestConsole
             stream.TweetCreatedByAnyone += (sender, args) =>
             {
                 Console.WriteLine($"[{args.Tweet.CreatedAt}] {args.Tweet.CreatedBy.ScreenName} : {args.Tweet.Text}");
+                var user = User.GetUserFromScreenName(args.Tweet.CreatedBy.ScreenName);
+                var b = user;
             };
 
             stream.StreamStopped += (sender, args) =>
