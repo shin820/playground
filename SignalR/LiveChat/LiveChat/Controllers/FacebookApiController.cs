@@ -27,7 +27,7 @@ namespace LiveChat.Controllers
         {
             var queryStrings = Request.GetQueryNameValuePairs();
             var challenge = queryStrings.FirstOrDefault(t => t.Key == "hub.challenge").Value;
-            return int.Parse(challenge);
+            return 0;
         }
 
         // POST api/values

@@ -15,9 +15,10 @@ namespace SocialMedia.Test
         {
             var fb = new FacebookClient(PAGE_TOKEN);
 
-            //var feeds = fb.Get("me/feed");
+            var feeds = fb.Get("me/feed");
 
-            dynamic userInfo = fb.Get("/121361878431739?fields=id,name,first_name,last_name,picture,gender,email,location");
+            //// 获取用户信息
+            //dynamic userInfo = fb.Get("/121361878431739?fields=id,name,first_name,last_name,picture,gender,email,location");
 
             dynamic tagged = fb.Get("/1974003879498745/tagged?fields=created_time,message,from{id,name,picture},to");
 
