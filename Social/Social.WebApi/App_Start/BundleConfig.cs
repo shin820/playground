@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace KB.WebApi
+namespace Social.WebApi
 {
     public class BundleConfig
     {

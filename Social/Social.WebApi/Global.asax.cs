@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using log4net;
+using Social.WebApi;
 using Social.WebApi.Core;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.SessionState;
 
-namespace KB.WebApi
+namespace Social.WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -31,7 +32,7 @@ namespace KB.WebApi
 
             Mapper.Initialize(cfg =>
                 cfg.AddProfiles(new[] {
-                    "KB.Application"
+                    "Social.Application"
                 })
             );
 

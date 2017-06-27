@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContextFactory.cs" />
+    <Compile Include="Entities\Conversation.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="SiteDataContext.cs" />
     <Compile Include="DomainIocInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainServices\" />
-    <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

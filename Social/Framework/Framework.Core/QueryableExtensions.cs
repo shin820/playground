@@ -6,9 +6,8 @@ using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
-using Framework.Core;
 
-namespace Framework.EntityFramework
+namespace Framework.Core
 {
     public static class QueryableExtensions
     {

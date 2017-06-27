@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Social.Application.Dto;
+using Social.Domain.Entities;
 
 namespace Social.Application
 {
@@ -6,6 +8,8 @@ namespace Social.Application
     {
         public DtoMappings()
         {
+            CreateMap<Conversation, ConversationDto>();
+            CreateMap<ConversationCreateDto, Conversation>();
         }
     }
 }

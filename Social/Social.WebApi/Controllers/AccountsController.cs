@@ -1,5 +1,5 @@
 ﻿using Framework.Authentication;
-using KB.WebApi.Models.Account;
+using Social.WebApi.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;

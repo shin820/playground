@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using KB.WebApi.Areas.HelpPage.ModelDescriptions;
-using KB.WebApi.Areas.HelpPage.Models;
+using Social.WebApi.Areas.HelpPage.ModelDescriptions;
+using Social.WebApi.Areas.HelpPage.Models;
 
-namespace KB.WebApi.Areas.HelpPage.Controllers
+namespace Social.WebApi.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

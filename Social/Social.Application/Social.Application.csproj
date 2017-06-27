@@ -52,7 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationIocFacility.cs" />
+    <Compile Include="AppServices\ConversationAppService.cs" />
     <Compile Include="DtoMappings.cs" />
+    <Compile Include="Dto\Conversation\ConversationCreateDto.cs" />
+    <Compile Include="Dto\Conversation\ConversationDto.cs" />
+    <Compile Include="Dto\Conversation\ConversationSearchDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,9 +76,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppServices\" />
-    <Folder Include="Dto\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

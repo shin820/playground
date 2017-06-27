@@ -1,11 +1,12 @@
 using System.Web.Http;
 using WebActivatorEx;
-using KB.WebApi;
+using Social.WebApi;
 using Swashbuckle.Application;
+using Social.WebApi.App_Start;
 
-[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
+//[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace KB.WebApi
+namespace Social.WebApi
 {
     public class SwaggerConfig
     {
@@ -32,7 +33,7 @@ namespace KB.WebApi
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "KB.WebApi");
+                        c.SingleApiVersion("v1", "Social.WebApi");
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
@@ -59,14 +60,10 @@ namespace KB.WebApi
                         //
                         // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
-                        //    .Description("Filling bearer token here")
+                        //    .Description("API Key Authentication")
                         //    .Name("apiKey")
                         //    .In("header");
-                        c.ApiKey("Token")
-                            .Description("API Key Authentication")
-                            .Name("Authorization")
-                            .In("header");
-
+                        //
                         //c.OAuth2("oauth2")
                         //    .Description("OAuth2 Implicit Grant")
                         //    .Flow("implicit")
@@ -157,6 +154,7 @@ namespace KB.WebApi
                         // to execute the operation
                         //
                         //c.OperationFilter<AssignOAuth2SecurityRequirements>();
+                        c.OperationFilter<SwaggerOperationFilter>();
 
                         // Post-modify the entire Swagger document by wiring up one or more Document filters.
                         // This gives full control to modify the final SwaggerDocument. You should have a good understanding of
@@ -244,7 +242,6 @@ namespace KB.WebApi
                         // "apiKeyIn" can either be "query" or "header"                                                
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
-                        c.EnableApiKeySupport("Authorization", "header");
                     });
         }
     }

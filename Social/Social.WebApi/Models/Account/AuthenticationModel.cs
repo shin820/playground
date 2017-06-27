@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace KB.WebApi.Models.Account
+namespace Social.WebApi.Models.Account
 {
     public class AuthenticationModel
     {

@@ -1,4 +1,5 @@
-﻿using Social.Infrastructure;
+﻿using Framework.Core;
+using Social.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,34 +24,11 @@ namespace Social.WebApi.Core
 
             if (principal == null || !principal.Identity.IsAuthenticated)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new ErrorInfo(0, "Please sign-in first."));
                 return Task.FromResult<object>(null);
-            }
-
-            if (string.IsNullOrWhiteSpace(Permissions))
-            {
-                return Task.FromResult<object>(null);
-            }
-
-            string[] permissions = Permissions.Split(',').Select(t => t.Trim().ToLower()).ToArray();
-            if (permissions != null && permissions.Any())
-            {
-                foreach (var permission in permissions)
-                {
-                    bool hasClaim = principal.HasClaim(
-                        x => x.Type == Comm100ClaimTypes.Permission && x.Value.Trim().ToLower() == permission
-                        );
-
-                    if (!hasClaim)
-                    {
-                        actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
-                        return Task.FromResult<object>(null);
-                    }
-                }
             }
 
             return Task.FromResult<object>(null);
-
         }
     }
 }
