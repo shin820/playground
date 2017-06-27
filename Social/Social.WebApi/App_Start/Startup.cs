@@ -1,10 +1,9 @@
 ﻿using Framework.Authentication.OAuth;
 using KB.WebApi.App_Start;
-using KB.WebApi.Controllers;
-using KB.WebApi.Core;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Social.WebApi.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

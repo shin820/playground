@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace KB.WebApi.Core
+namespace Social.WebApi.Core
 {
     public class ApiAuthorizeAttribute : AuthorizationFilterAttribute
     {

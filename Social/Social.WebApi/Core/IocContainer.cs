@@ -2,7 +2,7 @@
 using Framework.WebApi;
 using System.Web.Http;
 
-namespace KB.WebApi.Core
+namespace Social.WebApi.Core
 {
     public static class IocContainer
     {

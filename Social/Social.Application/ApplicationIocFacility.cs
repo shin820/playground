@@ -1,18 +1,19 @@
 ﻿using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
-using KB.Domain;
+using Framework.Core;
 using Social.Domain;
 
-namespace KB.Application
+namespace Social.Application
 {
     public class ApplicationIocFacility : AbstractFacility
     {
         protected override void Init()
         {
             Kernel.Register(
-            Classes.FromAssemblyNamed("KB.Application").Pick().If(t => t.Name.EndsWith("AppService"))
-                    .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                    .WithService.DefaultInterfaces().LifestylePerWebRequest()
+                Classes.FromAssemblyInThisApplication()
+                       .BasedOn(typeof(AppService))
+                       .WithServiceAllInterfaces()
+                       .LifestylePerWebRequest()
             );
 
             DomainIocInitializer.Init(Kernel);

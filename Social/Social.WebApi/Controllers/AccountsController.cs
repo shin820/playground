@@ -1,17 +1,17 @@
 ﻿using Framework.Authentication;
-using KB.WebApi.Core;
 using KB.WebApi.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Social.Infrastructure;
+using Social.WebApi.Core;
 using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Web.Http;
 
-namespace KB.WebApi.Controllers
+namespace Social.WebApi.Controllers
 {
     [RoutePrefix("api/accounts")]
     public class AccountsController : ApiController

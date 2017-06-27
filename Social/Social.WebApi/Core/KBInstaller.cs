@@ -1,9 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using KB.Application;
+using Social.Application;
 
-namespace KB.WebApi.Core
+namespace Social.WebApi.Core
 {
     public class KBInstaller : IWindsorInstaller
     {

@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj">
+      <Project>{1D101296-5F63-46CF-AB35-4A72EA5A9C08}</Project>
+      <Name>Framework.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Social.Domain\Social.Domain.csproj">
       <Project>{7f485985-ba40-4b9d-a0a9-63486c82f0af}</Project>
       <Name>Social.Domain</Name>

@@ -46,6 +46,9 @@
     <Reference Include="Fissoft.EntityFramework.Fts, Version=1.0.45.0, Culture=neutral, PublicKeyToken=00e20d155e1afabe, processorArchitecture=MSIL">
       <HintPath>..\packages\Fissoft.EntityFramework.Fts.1.0.45\lib\net45\Fissoft.EntityFramework.Fts.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -63,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContextFactory.cs" />
-    <Compile Include="KBDataContext.cs" />
+    <Compile Include="SiteDataContext.cs" />
     <Compile Include="DomainIocInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +75,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj">
+      <Project>{1D101296-5F63-46CF-AB35-4A72EA5A9C08}</Project>
+      <Name>Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.EntityFramework\Framework.EntityFramework.csproj">
+      <Project>{D53C16D3-88F7-4567-BA34-CDBAAC9B4902}</Project>
+      <Name>Framework.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Social.Infrastructure\Social.Infrastructure.csproj">
       <Project>{fe79d2df-6b23-4278-9c84-fc1d6487c45b}</Project>
       <Name>Social.Infrastructure</Name>

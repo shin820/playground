@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace KB.Application
+namespace Social.Application
 {
     public class DtoMappings : Profile
     {

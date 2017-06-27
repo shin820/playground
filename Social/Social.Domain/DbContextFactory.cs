@@ -4,7 +4,7 @@ using System.Threading;
 using System.Configuration;
 using System.Security.Claims;
 using Social.Infrastructure;
-using KB.Domain;
+using Framework.Core;
 
 namespace Social.Domain
 {
@@ -12,21 +12,15 @@ namespace Social.Domain
     {
         public static DbContext Create(IKernel kernel)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["KBDataContext"].ConnectionString;
-
-            ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            if (identity != null)
+            var connectionString = ConfigurationManager.ConnectionStrings["SiteDataContext"].ConnectionString;
+            var userContext = kernel.Resolve<IUserContext>();
+            if (userContext != null && userContext.SiteId.HasValue)
             {
-                int? sideId = identity.GetSideId();
-                if (sideId != null)
-                {
-                    //connectionString = GetConnectionString(sideId.Value);
-                    // trying switch to another data base at runtime.
-                    connectionString = "data source=localhost;initial catalog=KB2;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework";
-                }
+                // returne new SiteDataContext(DbConfigure.GetConnectionStringForSiteDatabase(userContext.SiteId.Value),userContext);
+                return new SiteDataContext(connectionString, userContext);
             }
 
-            return new KBDataContext(connectionString);
+            return new DbContext("error");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using KB.WebApi.Core;
 using log4net;
+using Social.WebApi.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
