@@ -12,11 +12,11 @@ using System.Web.Http.Description;
 namespace Social.WebApi.Controllers
 {
     [RoutePrefix("conversations")]
-    public class ConversationController : ApiController
+    public class ConversationsController : ApiController
     {
         private IConversationAppService _appService;
 
-        public ConversationController(IConversationAppService appService)
+        public ConversationsController(IConversationAppService appService)
         {
             _appService = appService;
         }
