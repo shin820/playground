@@ -115,5 +115,12 @@ namespace ApiIntergrationTest.Twitter
 
             Message.DestroyMessage(messsage);
         }
+
+        [Fact]
+        public void ShouldGetUserInfo()
+        {
+            var user = User.GetUserFromScreenName("shin___liu");
+            var b = user;
+        }
     }
 }

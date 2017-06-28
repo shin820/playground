@@ -236,7 +236,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SocialMedia.Facebook\SocialMedia.Facebook.csproj">
+    <ProjectReference Include="..\SocialMedia.Facebook\SocialMedia.Facebook.csproj">
       <Project>{5bfae9d6-8049-4395-b56f-937fbb3e852b}</Project>
       <Name>SocialMedia.Facebook</Name>
     </ProjectReference>
