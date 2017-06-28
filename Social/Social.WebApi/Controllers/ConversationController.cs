@@ -24,6 +24,7 @@ namespace Social.WebApi.Controllers
         [Route()]
         public PagedList<ConversationDto> GetConversations(ConversationSearchDto searchDto)
         {
+            searchDto = searchDto ?? new ConversationSearchDto();
             return _appService.Find(searchDto);
         }
 
@@ -37,6 +38,7 @@ namespace Social.WebApi.Controllers
         [ResponseType(typeof(ConversationDto))]
         public IHttpActionResult PostConversation(ConversationCreateDto createDto)
         {
+            createDto = createDto ?? new ConversationCreateDto();
             var conversation = _appService.Insert(createDto);
 
             return CreatedAtRoute("GetConversation", new { id = conversation.Id }, conversation);

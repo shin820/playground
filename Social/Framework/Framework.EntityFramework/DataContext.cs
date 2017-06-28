@@ -23,7 +23,7 @@ namespace Framework.EntityFramework
         protected DataContext(string nameOrConnectionString, IUserContext userContext)
             : base(nameOrConnectionString)
         {
-            UserContext = UserContext;
+            UserContext = userContext;
         }
 
         static DataContext()

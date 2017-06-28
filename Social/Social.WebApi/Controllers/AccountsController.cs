@@ -10,6 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Web.Http;
+using Framework.Core;
 
 namespace Social.WebApi.Controllers
 {

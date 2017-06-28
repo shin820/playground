@@ -4,7 +4,7 @@ using Social.WebApi;
 using Swashbuckle.Application;
 using Social.WebApi.App_Start;
 
-//[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
+[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace Social.WebApi
 {
@@ -148,13 +148,13 @@ namespace Social.WebApi
                         // Operation filters.
                         //
                         //c.OperationFilter<AddDefaultResponse>();
+                        c.OperationFilter<SwaggerOperationFilter>();
                         //
                         // If you've defined an OAuth2 flow as described above, you could use a custom filter
                         // to inspect some attribute on each action and infer which (if any) OAuth2 scopes are required
                         // to execute the operation
                         //
                         //c.OperationFilter<AssignOAuth2SecurityRequirements>();
-                        c.OperationFilter<SwaggerOperationFilter>();
 
                         // Post-modify the entire Swagger document by wiring up one or more Document filters.
                         // This gives full control to modify the final SwaggerDocument. You should have a good understanding of

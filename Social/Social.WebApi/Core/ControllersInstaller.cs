@@ -14,12 +14,15 @@ namespace Social.WebApi.Core
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Component.For<IUserContext>().ImplementedBy<UserContext>().LifestyleTransient();
+            container.Register(
 
-            container.Register(Classes.FromThisAssembly()
+            Component.For<IUserContext>().ImplementedBy<UserContext>().LifestyleTransient(),
+
+            Classes.FromThisAssembly()
                 .Pick().If(t => t.Name.EndsWith("Controller"))
                 .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                .LifestylePerWebRequest());
+                .LifestylePerWebRequest()
+                );
         }
     }
 }
