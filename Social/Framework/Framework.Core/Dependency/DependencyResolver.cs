@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Framework.Core.Dependency
+namespace Framework.Core
 {
     public class DependencyResolver: IDependencyResolver
     {

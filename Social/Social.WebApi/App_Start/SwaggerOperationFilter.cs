@@ -21,7 +21,8 @@ namespace Social.WebApi.App_Start
                     name = "siteId",
                     required = true,
                     type = "integer",
-                    @in = "query"
+                    @in = "query",
+                    @default = "10000"
                 });
             }
         }

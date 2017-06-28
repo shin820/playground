@@ -1,4 +1,4 @@
-﻿using Framework.Core.Dependency;
+﻿using Framework.Core;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

@@ -1,5 +1,5 @@
 ﻿using Castle.Core;
-using Framework.Core.Dependency;
+using Framework.Core;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

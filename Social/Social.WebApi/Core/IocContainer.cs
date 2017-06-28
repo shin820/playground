@@ -6,16 +6,15 @@ namespace Social.WebApi.Core
 {
     public static class IocContainer
     {
-        private static IWindsorContainer _container;
-
         public static void Setup()
         {
-            _container = new WindsorContainer().Install(
+            Framework.Core.DependencyResolver dependencyResolver = new Framework.Core.DependencyResolver();
+            dependencyResolver.Install(
                 new ControllersInstaller(),
                 new KBInstaller()
                 );
 
-            GlobalConfiguration.Configuration.DependencyResolver = new CastleDependencyResolver(_container.Kernel);
+            GlobalConfiguration.Configuration.DependencyResolver = new CastleDependencyResolver(dependencyResolver.IocContainer.Kernel);
         }
     }
 }
