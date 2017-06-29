@@ -30,7 +30,7 @@ namespace Social.WebApi.App_Start
 
             //app.UseOAuthAuthorizationServer(oAuthServerOptions);
             //app.UseOAuthBearerAuthentication(AccountsController.OAuthBearerOptions);
-
+            app.MapSignalR();
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.Use((context, next) =>

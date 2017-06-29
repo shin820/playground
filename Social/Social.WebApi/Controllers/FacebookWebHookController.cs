@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using Framework.WebApi;
+using Microsoft.AspNet.SignalR;
 using Social.WebApi.Hubs;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Http;
 
 namespace Social.WebApi.Controllers
 {
+    [IgnoreSiteId]
     public class FacebookWebHookController : ApiController
     {
         private Lazy<IHubContext> _hub = new Lazy<IHubContext>(() => GlobalHost.ConnectionManager.GetHubContext<FacebookHub>());
@@ -24,7 +26,7 @@ namespace Social.WebApi.Controllers
         {
             var queryStrings = Request.GetQueryNameValuePairs();
             var challenge = queryStrings.FirstOrDefault(t => t.Key == "hub.challenge").Value;
-            return 0;
+            return int.Parse(challenge);
         }
 
         // POST api/values

@@ -69,6 +69,7 @@
     <Compile Include="Filters\ApiExceptionFilterAttribute.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="HttpRequestMessageExtensions.cs" />
+    <Compile Include="IgnoreSiteIdAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filters\SiteIdRequiredAttribute.cs" />
     <Compile Include="SessionAuthenticationHandler.cs" />

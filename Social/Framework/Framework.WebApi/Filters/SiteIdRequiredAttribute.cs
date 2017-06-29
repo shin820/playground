@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Framework.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,10 @@ namespace Framework.WebApi
         {
             return Task.Run(() =>
             {
-                actionContext.Request.CheckSiteId();
+                if (!actionContext.ControllerContext.Controller.GetType().HasAttribute<IgnoreSiteIdAttribute>())
+                {
+                    actionContext.Request.CheckSiteId();
+                }
             });
         }
     }
