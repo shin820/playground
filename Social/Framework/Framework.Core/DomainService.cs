@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework.Core
 {
-    public class DefaultDomainService<TEntity> : IDomainService<TEntity> where TEntity : Entity
+    public class DomainService<TEntity> : IDomainService<TEntity> where TEntity : Entity
     {
         public IRepository<TEntity> Repository { get; set; }
         public IUserContext UserContext { get; set; }

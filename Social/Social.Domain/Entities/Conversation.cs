@@ -54,6 +54,8 @@ namespace Social.Domain.Entities
         [Required]
         public ConversationPriority Priority { get; set; } = ConversationPriority.Normal;
 
+        public string FacebookConversationId { get; set; }
+
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedTime { get; set; }
 

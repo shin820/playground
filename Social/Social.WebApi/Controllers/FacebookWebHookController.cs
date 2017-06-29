@@ -1,5 +1,6 @@
 ﻿using Framework.WebApi;
 using Microsoft.AspNet.SignalR;
+using Social.Infrastructure.Facebook;
 using Social.WebApi.Hubs;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using static Social.Infrastructure.Facebook.FacebookWebHookClient;
 
 namespace Social.WebApi.Controllers
 {
@@ -36,12 +38,12 @@ namespace Social.WebApi.Controllers
             {
                 var request = Request;
                 string rawData = await request.Content.ReadAsStringAsync();
-                //FBWebHookData data = await request.Content.ReadAsAsync<FBWebHookData>();
+                FbData data = await request.Content.ReadAsAsync<FbData>();
 
-                //if (data == null || !data.Entry.Any())
-                //{
-                //    return Ok();
-                //}
+                if (data == null || !data.Entry.Any())
+                {
+                    return Ok();
+                }
 
                 //var changes = data.Entry.First().Changes;
                 //if (changes != null && changes.Any())

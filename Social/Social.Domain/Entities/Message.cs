@@ -1,4 +1,5 @@
 ﻿using Framework.Core;
+using Social.Infrastructure.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,9 @@ namespace Social.Domain.Entities
     {
         [Required]
         public int ConversationId { get; set; }
+
+        [Required]
+        public MessageType Type { get; set; }
 
         [Required]
         public string SocialId { get; set; }

@@ -13,11 +13,11 @@ namespace Social.Domain
             kernel.Register(
 
                 Component.For(typeof(IDomainService<>))
-                .ImplementedBy(typeof(DefaultDomainService<>))
+                .ImplementedBy(typeof(DomainService<>))
                 .LifestylePerWebRequest(),
 
                 Classes.FromAssemblyInThisApplication()
-                .BasedOn(typeof(DefaultDomainService<>))
+                .BasedOn(typeof(DomainService<>))
                 .WithServiceAllInterfaces()
                 .LifestylePerWebRequest(),
 

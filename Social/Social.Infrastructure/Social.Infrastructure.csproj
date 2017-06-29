@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Social.Infrastructure</RootNamespace>
     <AssemblyName>Social.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,6 +36,9 @@
     </Reference>
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.4.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -70,6 +73,18 @@
     <Compile Include="Enum\ConversationPriority.cs" />
     <Compile Include="Enum\ConversationSource.cs" />
     <Compile Include="Enum\ConversationStatus.cs" />
+    <Compile Include="Enum\MessageType.cs" />
+    <Compile Include="Facebook\FacebookWebHookClient.cs" />
+    <Compile Include="Facebook\FbChange.cs" />
+    <Compile Include="Facebook\FbChangeValue.cs" />
+    <Compile Include="Facebook\FbData.cs" />
+    <Compile Include="Facebook\FbDataEntry.cs" />
+    <Compile Include="Facebook\FbMessage.cs" />
+    <Compile Include="Facebook\FbMessageContent.cs" />
+    <Compile Include="Facebook\FbMessageDelivery.cs" />
+    <Compile Include="Facebook\FbPage.cs" />
+    <Compile Include="Facebook\FbProfile.cs" />
+    <Compile Include="Facebook\FbToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClaimsIdentityExtensions.cs" />
     <Compile Include="Comm100ClaimTypes.cs" />
