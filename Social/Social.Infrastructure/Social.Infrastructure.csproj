@@ -74,6 +74,7 @@
     <Compile Include="Enum\ConversationSource.cs" />
     <Compile Include="Enum\ConversationStatus.cs" />
     <Compile Include="Enum\MessageType.cs" />
+    <Compile Include="Enum\SocialAccountType.cs" />
     <Compile Include="Facebook\FacebookWebHookClient.cs" />
     <Compile Include="Facebook\FbChange.cs" />
     <Compile Include="Facebook\FbChangeValue.cs" />

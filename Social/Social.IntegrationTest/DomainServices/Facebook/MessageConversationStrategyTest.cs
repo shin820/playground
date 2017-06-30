@@ -23,7 +23,7 @@ namespace Social.IntegrationTest.DomainServices.Facebook
 
             Assert.NotNull(message);
             Assert.NotNull(message.SocialId);
-            Assert.NotNull(message.Sender);
+            Assert.True(message.SenderId > 0);
             Assert.NotNull(message.SenderSocialId);
             Assert.NotNull(message.SenderEmail);
             Assert.NotNull(message.FacebookConversationId);

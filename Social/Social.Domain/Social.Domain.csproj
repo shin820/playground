@@ -69,15 +69,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContextFactory.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\ConversationStrategy.cs" />
     <Compile Include="DomainServices\Facebook\FacebookService.cs" />
     <Compile Include="DomainServices\Facebook\ConversationStrategy\IConverationSrategy.cs" />
     <Compile Include="DomainServices\Facebook\ConversationStrategy\MessageConversationStrategy.cs" />
     <Compile Include="Entities\Conversation.cs" />
+    <Compile Include="Entities\SocialAccounts\FacebookAccount.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\MessageAttachment.cs" />
-    <Compile Include="Entities\IntegrationAccount.cs" />
+    <Compile Include="Entities\SocialAccounts\SocialAccount.cs" />
     <Compile Include="Entities\SocialUserInfo.cs" />
+    <Compile Include="Entities\SocialAccounts\TwitterAccount.cs" />
     <Compile Include="SiteDataContext.cs" />
     <Compile Include="DomainIocInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

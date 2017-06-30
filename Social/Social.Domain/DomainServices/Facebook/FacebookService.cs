@@ -19,11 +19,11 @@ namespace Social.Domain.DomainServices
 
     public class FacebookService : IFacebookService
     {
-        private IRepository<IntegrationAccount> _socialAccountRepo;
+        private IRepository<FacebookAccount> _socialAccountRepo;
         private IDependencyResolver _dependencyResolver;
 
         public FacebookService(
-            IRepository<IntegrationAccount> socialAccountRepo,
+            IRepository<FacebookAccount> socialAccountRepo,
             IDependencyResolver dependencyResolver
             )
         {
@@ -50,14 +50,34 @@ namespace Social.Domain.DomainServices
             foreach (var change in changes)
             {
                 var socialAccount = _socialAccountRepo.FindAll().FirstOrDefault(t => t.SocialId == change.Value.PageId);
-                if (socialAccount != null)
+
+                if (socialAccount == null)
                 {
-                    var strategory = strategies.FirstOrDefault(t => t.IsMatch(change));
-                    if (strategory != null)
+                    socialAccount = new FacebookAccount
                     {
-                        await strategory.Process(socialAccount, change);
-                    }
+                        Name = "Shin's Test",
+                        SocialId = "1974003879498745",
+                        Token = "EAAR8yzs1uVQBAEBWQbsXb8HBP7cEbkTZB7CuqvuQlU1lx0ZCmlZCoy25HsxahMcCGfi8PirSyv5ZA62rvnm21EdZC3PZBK4FXfSti6cc8zIPKMb06fdR15sJqteOW2cIzTV64ZBZBZAnDLBwkNvYszc497CafdqAZCNRaip8w5SjmZCBwZDZD",
+                        IfConvertMessageToConversation = true
+                    };
+
+                    await _socialAccountRepo.InsertAsync(socialAccount);
                 }
+
+
+                var strategory = strategies.FirstOrDefault(t => t.IsMatch(change));
+                if (strategory != null)
+                {
+                    await strategory.Process(socialAccount, change);
+                }
+                //if (socialAccount != null)
+                //{
+                //    var strategory = strategies.FirstOrDefault(t => t.IsMatch(change));
+                //    if (strategory != null)
+                //    {
+                //        await strategory.Process(socialAccount, change);
+                //    }
+                //}
             }
         }
     }

@@ -25,11 +25,11 @@ namespace Social.Domain.Entities
         public string SocialId { get; set; }
 
         [Required]
-        public bool IsRead { get; set; }
+        public bool IfRead { get; set; }
 
-        public int? AgentAssignee { get; set; }
+        public int? Agent { get; set; }
 
-        public int? DepartmentAssignee { get; set; }
+        public int? Department { get; set; }
 
         [Required]
         public ConversationStatus Status { get; set; } = ConversationStatus.New;
@@ -41,7 +41,18 @@ namespace Social.Domain.Entities
         [MaxLength(2000)]
         public string Notes { get; set; }
 
-        public int IntegrationAccountId { get; set; }
+        public int SocialAccountId { get; set; }
+
+        public TimeSpan? HandlingTime { get; set; }
+
+        [Required]
+        public DateTime LastMessageSentTime { get; set; }
+
+        public bool IfLastMessageSendByAgent { get; set; }
+
+        public int LastMessageSendBy { get; set; }
+
+        public int? LastRepliedAgent { get; set; }
 
         [Required]
         public ConversationPriority Priority { get; set; } = ConversationPriority.Normal;
@@ -51,6 +62,8 @@ namespace Social.Domain.Entities
 
         public virtual IList<Message> Messages { get; set; }
 
-        public virtual IntegrationAccount IntegrationAccount { get; set; }
+        public virtual SocialAccount SocialAccount { get; set; }
+
+        //public virtual IList<Agent> RepliedAgents { get; set; }
     }
 }

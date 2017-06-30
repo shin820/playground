@@ -4,6 +4,7 @@ namespace Social.Domain
     using Framework.EntityFramework;
     using log4net;
     using Social.Domain.Entities;
+    using Social.Infrastructure.Enum;
     using System.Data.Entity;
 
     public class SiteDataContext : DataContext
@@ -18,7 +19,8 @@ namespace Social.Domain
 
         public virtual DbSet<Conversation> Conversations { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<IntegrationAccount> IntegrationAccounts { get; set; }
+        public virtual DbSet<SocialAccount> SocialAccounts { get; set; }
+        public virtual DbSet<SocialUserInfo> SocialUserInfoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,9 +33,9 @@ namespace Social.Domain
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Conversation>()
-                .HasRequired(t => t.IntegrationAccount)
+                .HasRequired(t => t.SocialAccount)
                 .WithMany(t => t.Conversations)
-                .HasForeignKey(t => t.IntegrationAccountId)
+                .HasForeignKey(t => t.SocialAccountId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Message>()
@@ -41,6 +43,11 @@ namespace Social.Domain
                 .WithRequired(t => t.Message)
                 .HasForeignKey(t => t.MessageId)
                 .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<SocialAccount>()
+                .Map<FacebookAccount>(m => m.Requires("Type").HasValue(0).IsRequired())
+                .Map<TwitterAccount>(m => m.Requires("Type").HasValue(1).IsRequired());
         }
     }
 }

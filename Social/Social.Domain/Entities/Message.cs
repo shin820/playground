@@ -28,15 +28,22 @@ namespace Social.Domain.Entities
         public string SocialId { get; set; }
 
         public bool? IsReplyComment { get; set; }
+
         public string ParentCommentId { get; set; }
 
         public DateTime SendTime { get; set; }
-        [MaxLength(200)]
-        public string Sender { get; set; }
+
+        [Required]
+        public int SenderId { get; set; }
+
         [MaxLength(200)]
         [Required]
         public string SenderSocialId { get; set; }
+
+        [NotMapped]
         public string SenderEmail { get; set; }
+
+        public bool IsSendByAgent { get; set; }
 
         public int? Agent { get; set; }
 

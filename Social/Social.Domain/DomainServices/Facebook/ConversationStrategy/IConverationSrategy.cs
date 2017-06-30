@@ -10,7 +10,7 @@ namespace Social.Domain.DomainServices.Facebook
 {
     public interface IConversationSrategy
     {
-        Task Process(IntegrationAccount socialAccount, FbChange data);
+        Task Process(SocialAccount socialAccount, FbChange data);
         bool IsMatch(FbChange data);
     }
 }
