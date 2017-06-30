@@ -171,8 +171,14 @@ namespace Framework.EntityFramework
             var userId = GetUserId();
             if (userId != null)
             {
-                entity.ModifiedTime = DateTime.Now;
-                entity.ModifiedBy = userId.Value;
+                if (entity.ModifiedTime != null)
+                {
+                    entity.ModifiedTime = DateTime.Now;
+                }
+                if (entity.ModifiedBy != null)
+                {
+                    entity.ModifiedBy = userId.Value;
+                }
             }
             else
             {

@@ -16,7 +16,6 @@ namespace Social.Domain.Entities
         public Conversation()
         {
             Messages = new List<Message>();
-            Tags = new List<Tag>();
         }
 
         [Required]
@@ -28,15 +27,6 @@ namespace Social.Domain.Entities
         [Required]
         public bool IsRead { get; set; }
 
-        [Required]
-        public TimeSpan HandlingTime { get; set; }
-
-        [Required]
-        public string Requester { get; set; }
-
-        [Required]
-        public string Receiver { get; set; }
-
         public int? AgentAssignee { get; set; }
 
         public int? DepartmentAssignee { get; set; }
@@ -45,21 +35,22 @@ namespace Social.Domain.Entities
         public ConversationStatus Status { get; set; } = ConversationStatus.New;
 
         [Required]
-        [MaxLength(300)]
+        [MaxLength(200)]
         public string Subject { get; set; }
 
         [MaxLength(2000)]
-        public string Comment { get; set; }
+        public string Notes { get; set; }
+
+        public int IntegrationAccountId { get; set; }
 
         [Required]
         public ConversationPriority Priority { get; set; } = ConversationPriority.Normal;
-
-        public string FacebookConversationId { get; set; }
 
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedTime { get; set; }
 
         public virtual IList<Message> Messages { get; set; }
-        public virtual IList<Tag> Tags { get; set; }
+
+        public virtual IntegrationAccount IntegrationAccount { get; set; }
     }
 }

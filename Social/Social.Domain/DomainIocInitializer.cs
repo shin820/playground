@@ -2,6 +2,7 @@
 using Castle.MicroKernel.Registration;
 using Framework.Core;
 using Framework.EntityFramework;
+using Social.Domain.DomainServices;
 using System.Data.Entity;
 
 namespace Social.Domain
@@ -11,6 +12,10 @@ namespace Social.Domain
         public static void Init(IKernel kernel)
         {
             kernel.Register(
+
+                Component.For<IFacebookService>()
+                .ImplementedBy<FacebookService>()
+                .LifestyleTransient(),
 
                 Component.For(typeof(IDomainService<>))
                 .ImplementedBy(typeof(DomainService<>))

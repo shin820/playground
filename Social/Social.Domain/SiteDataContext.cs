@@ -18,7 +18,7 @@ namespace Social.Domain
 
         public virtual DbSet<Conversation> Conversations { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<IntegrationAccount> IntegrationAccounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,14 +31,16 @@ namespace Social.Domain
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Conversation>()
-                .HasMany(t => t.Tags)
+                .HasRequired(t => t.IntegrationAccount)
                 .WithMany(t => t.Conversations)
-                .Map(cs =>
-                {
-                    cs.MapLeftKey("ConversationId");
-                    cs.MapRightKey("TagId");
-                    cs.ToTable("t_Social_ConversationTagRelation");
-                });
+                .HasForeignKey(t => t.IntegrationAccountId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Message>()
+                .HasMany(t => t.Attachments)
+                .WithRequired(t => t.Message)
+                .HasForeignKey(t => t.MessageId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

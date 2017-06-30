@@ -11,8 +11,13 @@ using System.Threading.Tasks;
 namespace Social.Domain.Entities
 {
     [Table("t_Social_Message")]
-    public class Message : EntityWithSite, IHaveModification
+    public class Message : EntityWithSite
     {
+        public Message()
+        {
+            Attachments = new List<MessageAttachment>();
+        }
+
         [Required]
         public int ConversationId { get; set; }
 
@@ -27,7 +32,11 @@ namespace Social.Domain.Entities
 
         public DateTime SendTime { get; set; }
         [MaxLength(200)]
-        public string SendBy { get; set; }
+        public string Sender { get; set; }
+        [MaxLength(200)]
+        [Required]
+        public string SenderSocialId { get; set; }
+        public string SenderEmail { get; set; }
 
         public int? Agent { get; set; }
 
@@ -36,9 +45,10 @@ namespace Social.Domain.Entities
         [MaxLength(500)]
         public string SocialUrl { get; set; }
 
-        public int? ModifiedBy { get; set; }
-        public DateTime? ModifiedTime { get; set; }
+        public string FacebookConversationId { get; set; }
 
         public virtual Conversation Conversation { get; set; }
+
+        public virtual IList<MessageAttachment> Attachments { get; set; }
     }
 }
