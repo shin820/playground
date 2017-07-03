@@ -14,24 +14,24 @@ namespace Social.Domain.DomainServices
 {
     public interface IFacebookService
     {
-        Task Process(FbData fbData);
+        Task ProcessWebHookData(FbData fbData);
     }
 
     public class FacebookService : IFacebookService
     {
         private IRepository<FacebookAccount> _socialAccountRepo;
-        private IDependencyResolver _dependencyResolver;
+        private IConversationStrategyFactory _strategyFactory;
 
         public FacebookService(
             IRepository<FacebookAccount> socialAccountRepo,
-            IDependencyResolver dependencyResolver
+            IConversationStrategyFactory strategyFactory
             )
         {
             _socialAccountRepo = socialAccountRepo;
-            _dependencyResolver = dependencyResolver;
+            _strategyFactory = strategyFactory;
         }
 
-        public async Task Process(FbData fbData)
+        public async Task ProcessWebHookData(FbData fbData)
         {
             if (fbData == null || !fbData.Entry.Any())
             {
@@ -44,41 +44,91 @@ namespace Social.Domain.DomainServices
                 return;
             }
 
-
-            var strategies = _dependencyResolver.ResolveAll<IConversationSrategy>();
+            if (fbData.Object != "page")
+            {
+                return;
+            }
 
             foreach (var change in changes)
             {
                 var socialAccount = _socialAccountRepo.FindAll().FirstOrDefault(t => t.SocialId == change.Value.PageId);
 
-                if (socialAccount == null)
+                if (socialAccount != null)
                 {
-                    socialAccount = new FacebookAccount
+                    var strategory = _strategyFactory.Create(change);
+                    if (strategory != null)
                     {
-                        Name = "Shin's Test",
-                        SocialId = "1974003879498745",
-                        Token = "EAAR8yzs1uVQBAEBWQbsXb8HBP7cEbkTZB7CuqvuQlU1lx0ZCmlZCoy25HsxahMcCGfi8PirSyv5ZA62rvnm21EdZC3PZBK4FXfSti6cc8zIPKMb06fdR15sJqteOW2cIzTV64ZBZBZAnDLBwkNvYszc497CafdqAZCNRaip8w5SjmZCBwZDZD",
-                        IfConvertMessageToConversation = true
-                    };
-
-                    await _socialAccountRepo.InsertAsync(socialAccount);
+                        await strategory.Process(socialAccount, change);
+                    }
                 }
-
-
-                var strategory = strategies.FirstOrDefault(t => t.IsMatch(change));
-                if (strategory != null)
-                {
-                    await strategory.Process(socialAccount, change);
-                }
-                //if (socialAccount != null)
-                //{
-                //    var strategory = strategies.FirstOrDefault(t => t.IsMatch(change));
-                //    if (strategory != null)
-                //    {
-                //        await strategory.Process(socialAccount, change);
-                //    }
-                //}
             }
+        }
+
+        public static async Task<SocialUserInfo> GetUserInfo(SocialAccount socialAccount, Message message)
+        {
+            FacebookClient client = new FacebookClient(socialAccount.Token);
+            string url = "/" + message.SenderSocialId + "?fields=id,name,first_name,last_name,picture,gender,email,location";
+            dynamic userInfo = await client.GetTaskAsync(url);
+
+            var user = new SocialUserInfo
+            {
+                Name = userInfo.name,
+                SocialId = message.SenderSocialId,
+                Email = message.SenderEmail
+            };
+            if (userInfo.picture != null && userInfo.picture.data.url != null)
+            {
+                user.Avatar = userInfo.picture.data.url;
+            }
+
+            return user;
+        }
+
+        public async static Task<Message> GetLastMessageFromConversationId(string token, string fbConversationId)
+        {
+            Checker.NotNullOrWhiteSpace(fbConversationId, nameof(fbConversationId));
+
+            FacebookClient client = new FacebookClient(token);
+            string url = "/" + fbConversationId + "?fields=messages.limit(1){from,to,message,id,created_time,attachments},updated_time";
+            dynamic conversation = await client.GetTaskAsync(url);
+            dynamic fbMessage = conversation.messages.data[0];
+
+            var message = new Message
+            {
+                SocialId = fbMessage.id,
+                SendTime = Convert.ToDateTime(fbMessage.created_time).ToUniversalTime(),
+                SenderSocialId = fbMessage.from.id,
+                SenderEmail = fbMessage.from.email,
+                Type = MessageType.FacebookMessage,
+                Content = fbMessage.message,
+                FacebookConversationId = conversation.id,
+            };
+
+            if (fbMessage.attachments != null)
+            {
+                foreach (dynamic attachmnent in fbMessage.attachments.data)
+                {
+                    var messageAttachment = new MessageAttachment
+                    {
+                        SocialId = attachmnent.id,
+                        MimeType = attachmnent.mime_type,
+                        Name = attachmnent.name,
+                    };
+                    if (attachmnent.image_data != null)
+                    {
+                        messageAttachment.ImageWidth = attachmnent.image_data.width;
+                        messageAttachment.ImageHeight = attachmnent.image_data.height;
+                        messageAttachment.ImageMaxWidth = attachmnent.image_data.max_width;
+                        messageAttachment.ImageMaxHeight = attachmnent.image_data.max_height;
+                        messageAttachment.ImageUrl = attachmnent.image_data.url;
+                        messageAttachment.ImagePreviewUrl = attachmnent.image_data.preview_url;
+                    }
+
+                    message.Attachments.Add(messageAttachment);
+                }
+            }
+
+            return message;
         }
     }
 }

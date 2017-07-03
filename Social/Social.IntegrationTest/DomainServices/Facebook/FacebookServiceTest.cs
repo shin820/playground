@@ -14,8 +14,6 @@ namespace Social.IntegrationTest
 {
     public class FacebookServiceTest : TestBase
     {
-        private string _pageToken = "EAAR8yzs1uVQBAEBWQbsXb8HBP7cEbkTZB7CuqvuQlU1lx0ZCmlZCoy25HsxahMcCGfi8PirSyv5ZA62rvnm21EdZC3PZBK4FXfSti6cc8zIPKMb06fdR15sJqteOW2cIzTV64ZBZBZAnDLBwkNvYszc497CafdqAZCNRaip8w5SjmZCBwZDZD";
-
         [Fact]
         public async Task ShouldProcessMessageData()
         {
@@ -23,7 +21,7 @@ namespace Social.IntegrationTest
 
             var data = Newtonsoft.Json.JsonConvert.DeserializeObject<FbData>(rawData);
             IFacebookService facebookService = DependencyResolver.Resolve<IFacebookService>();
-            await facebookService.Process(data);
+            await facebookService.ProcessWebHookData(data);
         }
     }
 }

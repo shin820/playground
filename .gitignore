@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /ApiIntergrationTest/TwitterTest/publish_package
 /ApiIntergrationTest/TwitterTest/Properties/PublishProfiles/CustomProfile.pubxml
+/Social/Social.WebApi/App_Data/Logs.*
