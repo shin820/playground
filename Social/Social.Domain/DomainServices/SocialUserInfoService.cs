@@ -13,9 +13,9 @@ namespace Social.Domain.DomainServices
         Task<SocialUserInfo> GetOrCreateSocialUser(SocialAccount socialAccount, Message message);
     }
 
-    public class SocialUserInfoService : DomainService<SocialUserInfo>
+    public class SocialUserInfoService : DomainService<SocialUserInfo>, ISocialUserInfoService
     {
-        private async Task<SocialUserInfo> GetOrCreateSocialUser(SocialAccount socialAccount, Message message)
+        public async Task<SocialUserInfo> GetOrCreateSocialUser(SocialAccount socialAccount, Message message)
         {
             var socialUser = Repository.FindAll().Where(t => t.SiteId == socialAccount.SiteId && t.SocialId == message.SenderSocialId).FirstOrDefault();
             var facebookUser = await FacebookService.GetUserInfo(socialAccount, message);

@@ -12,9 +12,9 @@ namespace Social.Domain
         public static void Init(IKernel kernel)
         {
             kernel.Register(
-
-                Component.For<IFacebookService>()
-                .ImplementedBy<FacebookService>()
+                Classes.FromAssemblyInThisApplication()
+                .BasedOn<ITransient>()
+                .WithServiceAllInterfaces()
                 .LifestyleTransient(),
 
                 Component.For(typeof(IDomainService<>))

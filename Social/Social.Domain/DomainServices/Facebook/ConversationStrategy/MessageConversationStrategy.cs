@@ -63,6 +63,8 @@ namespace Social.Domain.DomainServices.Facebook
 
             var existingConversation = _conversationRepo.FindAll().FirstOrDefault(t => t.SiteId == socialAccount.SiteId && t.SocialId == change.Value.ThreadId && t.Status != ConversationStatus.Closed);
             message.SiteId = socialAccount.SiteId;
+            message.Attachments.Foreach(t => t.SiteId = message.SiteId);
+            message.Shares.Foreach(t => t.SiteId = message.SiteId);
             if (existingConversation != null)
             {
                 existingConversation.IfRead = false;

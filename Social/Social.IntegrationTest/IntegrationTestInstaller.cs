@@ -25,15 +25,19 @@ namespace Social.IntegrationTest
 
               Component.For<IUserContext>().ImplementedBy<NullUserContext>().LifestyleTransient(),
 
-              Component.For<IFacebookService>()
-                .ImplementedBy<FacebookService>()
-                .LifestyleTransient(),
+              //Component.For<IFacebookService>()
+              //  .ImplementedBy<FacebookService>()
+              //  .LifestyleTransient(),
 
+              //Classes.FromAssemblyInThisApplication()
+              //.BasedOn<IConversationSrategy>()
+              //.WithServiceSelf()
+              //.WithServiceAllInterfaces()
+              //.LifestylePerThread(),
               Classes.FromAssemblyInThisApplication()
-              .BasedOn<IConversationSrategy>()
-              .WithServiceSelf()
+              .BasedOn<ITransient>()
               .WithServiceAllInterfaces()
-              .LifestylePerThread(),
+              .LifestyleTransient(),
 
 
                 Component.For(typeof(IDomainService<>))

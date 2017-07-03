@@ -57,5 +57,7 @@ namespace Social.Domain.Entities
         public virtual Conversation Conversation { get; set; }
 
         public virtual IList<MessageAttachment> Attachments { get; set; }
+
+        public virtual IList<MessageShares> Shares { get; set; }
     }
 }

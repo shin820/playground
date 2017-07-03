@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Social.Domain.DomainServices
 {
-    public interface IFacebookService
+    public interface IFacebookService : ITransient
     {
         Task ProcessWebHookData(FbData fbData);
     }
@@ -89,7 +89,7 @@ namespace Social.Domain.DomainServices
             Checker.NotNullOrWhiteSpace(fbConversationId, nameof(fbConversationId));
 
             FacebookClient client = new FacebookClient(token);
-            string url = "/" + fbConversationId + "?fields=messages.limit(1){from,to,message,id,created_time,attachments},updated_time";
+            string url = "/" + fbConversationId + "?fields=messages.limit(1){from,to,message,id,created_time,attachments,shares{link,name,id}}";
             dynamic conversation = await client.GetTaskAsync(url);
             dynamic fbMessage = conversation.messages.data[0];
 
@@ -125,6 +125,19 @@ namespace Social.Domain.DomainServices
                     }
 
                     message.Attachments.Add(messageAttachment);
+                }
+            }
+
+            if (fbMessage.shares != null)
+            {
+                foreach (dynamic share in fbMessage.shares.data)
+                {
+                    var messageShare = new MessageShares
+                    {
+                        Link = share.link,
+                    };
+
+                    message.Shares.Add(messageShare);
                 }
             }
 

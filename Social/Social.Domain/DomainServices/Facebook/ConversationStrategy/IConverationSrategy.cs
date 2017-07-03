@@ -1,4 +1,5 @@
-﻿using Social.Domain.Entities;
+﻿using Framework.Core;
+using Social.Domain.Entities;
 using Social.Infrastructure.Facebook;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Social.Domain.DomainServices.Facebook
 {
-    public interface IConversationSrategy
+    public interface IConversationSrategy : ITransient
     {
         Task Process(SocialAccount socialAccount, FbChange data);
         bool IsMatch(FbChange data);

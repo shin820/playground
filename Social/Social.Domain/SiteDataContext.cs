@@ -44,6 +44,12 @@ namespace Social.Domain
                 .HasForeignKey(t => t.MessageId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Message>()
+                .HasMany(t => t.Shares)
+                .WithRequired(t => t.Message)
+                .HasForeignKey(t => t.MessageId)
+                .WillCascadeOnDelete(false);
+
 
             modelBuilder.Entity<SocialAccount>()
                 .Map<FacebookAccount>(m => m.Requires("Type").HasValue(0).IsRequired())
