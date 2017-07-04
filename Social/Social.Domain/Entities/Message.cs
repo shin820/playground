@@ -16,6 +16,7 @@ namespace Social.Domain.Entities
         public Message()
         {
             Attachments = new List<MessageAttachment>();
+            Shares = new List<MessageShare>();
         }
 
         [Required]
@@ -58,6 +59,6 @@ namespace Social.Domain.Entities
 
         public virtual IList<MessageAttachment> Attachments { get; set; }
 
-        public virtual IList<MessageShares> Shares { get; set; }
+        public virtual IList<MessageShare> Shares { get; set; }
     }
 }

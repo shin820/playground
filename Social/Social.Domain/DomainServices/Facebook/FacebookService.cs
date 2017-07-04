@@ -132,7 +132,7 @@ namespace Social.Domain.DomainServices
             {
                 foreach (dynamic share in fbMessage.shares.data)
                 {
-                    var messageShare = new MessageShares
+                    var messageShare = new MessageShare
                     {
                         Link = share.link,
                     };
