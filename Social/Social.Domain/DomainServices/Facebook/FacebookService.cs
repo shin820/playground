@@ -113,6 +113,7 @@ namespace Social.Domain.DomainServices
                         SocialId = attachmnent.id,
                         MimeType = attachmnent.mime_type,
                         Name = attachmnent.name,
+                        FileUrl = attachmnent.file_url
                     };
                     if (attachmnent.image_data != null)
                     {
