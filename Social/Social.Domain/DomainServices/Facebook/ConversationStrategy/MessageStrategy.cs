@@ -11,13 +11,13 @@ using Facebook;
 
 namespace Social.Domain.DomainServices.Facebook
 {
-    public class MessageConversationStrategy : IConversationSrategy
+    public class MessageStrategy : IConversationSrategy
     {
         private IRepository<Conversation> _conversationRepo;
         private IRepository<Message> _messageRepo;
         private ISocialUserInfoService _socialUserInfoService;
 
-        public MessageConversationStrategy(
+        public MessageStrategy(
             IRepository<Conversation> conversationRepo,
             IRepository<Message> messageRepo,
             ISocialUserInfoService socialUserInfoService
@@ -70,6 +70,8 @@ namespace Social.Domain.DomainServices.Facebook
                 existingConversation.IfRead = false;
                 existingConversation.Messages.Add(message);
                 existingConversation.Status = ConversationStatus.PendingInternal;
+                existingConversation.LastMessageSendBy = message.SenderId;
+                existingConversation.LastMessageSentTime = message.SendTime;
                 await _conversationRepo.UpdateAsync(existingConversation);
             }
             else

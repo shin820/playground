@@ -49,10 +49,10 @@ namespace Social.Domain.DomainServices
                 return;
             }
 
+            string pageId = fbData.Entry.First().Id;
+            var socialAccount = _socialAccountRepo.FindAll().FirstOrDefault(t => t.SocialId == pageId);
             foreach (var change in changes)
             {
-                var socialAccount = _socialAccountRepo.FindAll().FirstOrDefault(t => t.SocialId == change.Value.PageId);
-
                 if (socialAccount != null)
                 {
                     var strategory = _strategyFactory.Create(change);
@@ -84,8 +84,30 @@ namespace Social.Domain.DomainServices
             return user;
         }
 
+        public async static Task<Message> GetMessageFromPostId(string token, string fbPostId)
+        {
+            Checker.NotNullOrWhiteSpace(token, nameof(token));
+            Checker.NotNullOrWhiteSpace(fbPostId, nameof(fbPostId));
+
+            FacebookClient client = new FacebookClient(token);
+            string url = "/" + fbPostId + "?fields=fields=id,message,created_time,to{id,name,pic,username},from";
+
+            dynamic post = await client.GetTaskAsync(url);
+            var message = new Message
+            {
+                SocialId = post.id,
+                SendTime = Convert.ToDateTime(post.created_time).ToUniversalTime(),
+                SenderSocialId = post.from.id,
+                Type = MessageType.FacebookPost,
+                Content = post.message
+            };
+
+            return message;
+        }
+
         public async static Task<Message> GetLastMessageFromConversationId(string token, string fbConversationId)
         {
+            Checker.NotNullOrWhiteSpace(token, nameof(token));
             Checker.NotNullOrWhiteSpace(fbConversationId, nameof(fbConversationId));
 
             FacebookClient client = new FacebookClient(token);

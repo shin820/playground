@@ -16,7 +16,7 @@ namespace Social.IntegrationTest.DomainServices.Facebook
         [Fact]
         public async Task ShouldGetLatestMessageFromConversation()
         {
-            MessageConversationStrategy facebookService = DependencyResolver.Resolve<MessageConversationStrategy>();
+            MessageStrategy facebookService = DependencyResolver.Resolve<MessageStrategy>();
             Message message = await FacebookService.GetLastMessageFromConversationId
                 (TestFacebookAccount.Token, "t_mid.$cAAdZrm4k4UZh9X1vd1bxDgkg7Bo9");
 

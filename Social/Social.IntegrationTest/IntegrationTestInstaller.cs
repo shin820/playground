@@ -37,6 +37,7 @@ namespace Social.IntegrationTest
               Classes.FromAssemblyInThisApplication()
               .BasedOn<ITransient>()
               .WithServiceAllInterfaces()
+              .WithServiceSelf()
               .LifestyleTransient(),
 
 
