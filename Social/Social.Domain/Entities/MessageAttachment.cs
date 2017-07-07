@@ -16,14 +16,8 @@ namespace Social.Domain.Entities
         public string Name { get; set; }
         public string MimeType { get; set; }
         public int Size { get; set; }
-        public string FileUrl { get; set; }
-
-        public long? ImageWidth { get; set; }
-        public long? ImageHeight { get; set; }
-        public long? ImageMaxWidth { get; set; }
-        public long? ImageMaxHeight { get; set; }
-        public string ImageUrl { get; set; }
-        public string ImagePreviewUrl { get; set; }
+        public string Url { get; set; }
+        public string PreviewUrl { get; set; }
 
         public virtual Message Message { get; set; }
     }

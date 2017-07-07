@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Facebook
 {
-    public class FbChangeValue
+    public class FbHookChangeValue
     {
         public string Item { get; set; }
         [JsonProperty("comment_id")]

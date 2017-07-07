@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Facebook
 {
-    public class FbDataEntry
+    public class FbHookDataEntry
     {
         public string Id { get; set; }
         public long Time { get; set; }
-        public List<FbMessage> Messaging { get; set; }
-        public List<FbChange> Changes { get; set; }
+        public List<FbHookMessage> Messaging { get; set; }
+        public List<FbHookChange> Changes { get; set; }
     }
 }

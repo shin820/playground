@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Facebook
 {
-    public class FbMessageContent
+    public class FbHookMessageContent
     {
         public string Mid { get; set; }
         public long Seq { get; set; }

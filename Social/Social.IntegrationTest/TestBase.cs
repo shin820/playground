@@ -1,5 +1,6 @@
 ﻿using Framework.Core;
 using Social.Domain.Entities;
+using Social.Infrastructure.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Social.IntegrationTest
     public class TestBase
     {
         protected static DependencyResolver DependencyResolver;
-        protected FacebookAccount TestFacebookAccount;
+        protected SocialAccount TestFacebookAccount;
 
         static TestBase()
         {
@@ -21,15 +22,20 @@ namespace Social.IntegrationTest
 
         public TestBase()
         {
-            IRepository<FacebookAccount> socailAccountRepo = DependencyResolver.Resolve<IRepository<FacebookAccount>>();
-            TestFacebookAccount = socailAccountRepo.FindAll().FirstOrDefault(t => t.SiteId == 10000 && t.SocialId == "1974003879498745");
+            IRepository<SocialAccount> socailAccountRepo = DependencyResolver.Resolve<IRepository<SocialAccount>>();
+            TestFacebookAccount = socailAccountRepo.FindAll().FirstOrDefault(t => t.SiteId == 10000 && t.SocialUser.SocialId == "1974003879498745");
 
             if (TestFacebookAccount == null)
             {
-                TestFacebookAccount = new FacebookAccount
+                TestFacebookAccount = new SocialAccount
                 {
-                    Name = "Shin's Test",
-                    SocialId = "1974003879498745",
+                    SocialUser = new SocialUser
+                    {
+                        Name = "Shin's Test",
+                        SocialId = "1974003879498745",
+                        SiteId = 10000,
+                        Type = SocialUserType.Facebook
+                    },
                     Token = "EAAR8yzs1uVQBAEBWQbsXb8HBP7cEbkTZB7CuqvuQlU1lx0ZCmlZCoy25HsxahMcCGfi8PirSyv5ZA62rvnm21EdZC3PZBK4FXfSti6cc8zIPKMb06fdR15sJqteOW2cIzTV64ZBZBZAnDLBwkNvYszc497CafdqAZCNRaip8w5SjmZCBwZDZD",
                     SiteId = 10000,
                     IfConvertMessageToConversation = true,

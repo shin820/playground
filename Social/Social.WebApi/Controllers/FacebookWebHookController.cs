@@ -38,7 +38,7 @@ namespace Social.WebApi.Controllers
             {
                 var request = Request;
                 string rawData = await request.Content.ReadAsStringAsync();
-                FbData data = await request.Content.ReadAsAsync<FbData>();
+                FbHookData data = await request.Content.ReadAsAsync<FbHookData>();
 
                 if (data == null || !data.Entry.Any())
                 {

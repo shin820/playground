@@ -8,10 +8,19 @@ namespace Social.Infrastructure.Facebook
 {
     public class FbMessage
     {
-        public FbProfile Sender { get; set; }
-        public FbProfile Recipient { get; set; }
-        public long Timestamp { get; set; }
-        public FbMessageContent Message { get; set; }
-        public FbMessageDelivery Delivery { get; set; }
+        public FbMessage()
+        {
+            Attachments = new List<FbMessageAttachment>();
+        }
+
+        public string Id { get; set; }
+        public DateTime SendTime { get; set; }
+        public string SenderId { get; set; }
+        public string SenderEmail { get; set; }
+        public string ReceiverId { get; set; }
+        public string ReceiverEmail { get; set; }
+        public string Content { get; set; }
+
+        public IList<FbMessageAttachment> Attachments { get; set; }
     }
 }

@@ -69,21 +69,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContextFactory.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\ConversationStrategyFactory.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\IConversationStrategyFactory.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\VisitorPostStrategy.cs" />
-    <Compile Include="DomainServices\Facebook\FacebookService.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\IConverationSrategy.cs" />
-    <Compile Include="DomainServices\Facebook\ConversationStrategy\MessageStrategy.cs" />
-    <Compile Include="DomainServices\SocialUserInfoService.cs" />
+    <Compile Include="bin\DomainServices\Facebook\ConversationStrategy\ConversationStrategyFactory.cs" />
+    <Compile Include="bin\DomainServices\Facebook\ConversationStrategy\IConversationStrategyFactory.cs" />
+    <Compile Include="bin\DomainServices\Facebook\ConversationStrategy\VisitorPostStrategy.cs" />
+    <Compile Include="bin\DomainServices\Facebook\FacebookService.cs" />
+    <Compile Include="bin\DomainServices\Facebook\ConversationStrategy\IConverationSrategy.cs" />
+    <Compile Include="bin\DomainServices\Facebook\ConversationStrategy\MessageStrategy.cs" />
+    <Compile Include="bin\DomainServices\SocialUserInfoService.cs" />
     <Compile Include="Entities\Conversation.cs" />
-    <Compile Include="Entities\MessageShare.cs" />
-    <Compile Include="Entities\SocialAccounts\FacebookAccount.cs" />
+    <Compile Include="Entities\ConversationField.cs" />
+    <Compile Include="Entities\ConversationFieldOption.cs" />
+    <Compile Include="Entities\Filter.cs" />
+    <Compile Include="Entities\FilterCondition.cs" />
+    <Compile Include="Entities\LiveChat\Department.cs" />
+    <Compile Include="Entities\LiveChat\User.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\MessageAttachment.cs" />
-    <Compile Include="Entities\SocialAccounts\SocialAccount.cs" />
-    <Compile Include="Entities\SocialUserInfo.cs" />
-    <Compile Include="Entities\SocialAccounts\TwitterAccount.cs" />
+    <Compile Include="Entities\ConversationLog.cs" />
+    <Compile Include="Entities\SocialAccount.cs" />
+    <Compile Include="Entities\SocialUser.cs" />
     <Compile Include="SiteDataContext.cs" />
     <Compile Include="DomainIocInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

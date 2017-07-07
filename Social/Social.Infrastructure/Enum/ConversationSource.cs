@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Enum
 {
-    public enum ConversationSource
+    public enum ConversationSource : short
     {
         FacebookMessage = 1,
         FacebookVisitorPost = 2,

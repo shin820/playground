@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Enum
 {
-    public enum MessageType
+    public enum MessageSource : short
     {
         FacebookMessage = 1,
         FacebookPost = 2,
-        TwitterTweet = 3,
-        TwitterDirectMessage = 4
+        FacebookPostComment = 3,
+        TwitterTypicalTweet = 4,
+        TwitterQuoteTweet = 5,
+        TwitterDirectMessage = 6
     }
 }

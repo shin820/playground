@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Facebook
 {
-    public class FbMessageDelivery
+    public class FbHookChange
     {
-        public string Watermark { get; set; }
-        public long Seq { get; set; }
-        public List<string> Mids { get; set; }
+        public string Field { get; set; }
+        public FbHookChangeValue Value { get; set; }
     }
 }

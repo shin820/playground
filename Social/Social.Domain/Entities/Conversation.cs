@@ -16,54 +16,50 @@ namespace Social.Domain.Entities
         public Conversation()
         {
             Messages = new List<Message>();
+            Logs = new List<ConversationLog>();
+            Filters = new List<Filter>();
+            Fields = new List<ConversationField>();
         }
 
-        [Required]
         public ConversationSource Source { get; set; }
 
-        [Required]
         public string SocialId { get; set; }
 
-        [Required]
         public bool IfRead { get; set; }
 
-        public int? Agent { get; set; }
+        public DateTime LastMessageSentTime { get; set; }
 
-        public int? Department { get; set; }
+        public int LastMessageSenderId { get; set; }
 
-        [Required]
-        public ConversationStatus Status { get; set; } = ConversationStatus.New;
+        public int? LastRepliedAgentId { get; set; }
+
+        public int? AgentId { get; set; }
+
+        public int? DepartmentId { get; set; }
+
+        public ConversationStatus Status { get; set; }
 
         [Required]
         [MaxLength(200)]
         public string Subject { get; set; }
 
+        public ConversationPriority Priority { get; set; }
+
         [MaxLength(2000)]
-        public string Notes { get; set; }
-
-        public int SocialAccountId { get; set; }
-
-        public TimeSpan? HandlingTime { get; set; }
-
-        [Required]
-        public DateTime LastMessageSentTime { get; set; }
-
-        public bool IfLastMessageSendByAgent { get; set; }
-
-        public int LastMessageSendBy { get; set; }
-
-        public int? LastRepliedAgent { get; set; }
-
-        [Required]
-        public ConversationPriority Priority { get; set; } = ConversationPriority.Normal;
+        public string Note { get; set; }
 
         public int? ModifiedBy { get; set; }
+
         public DateTime? ModifiedTime { get; set; }
 
         public virtual IList<Message> Messages { get; set; }
 
-        public virtual SocialAccount SocialAccount { get; set; }
+        public virtual IList<ConversationLog> Logs { get; set; }
 
-        //public virtual IList<Agent> RepliedAgents { get; set; }
+        public virtual IList<Filter> Filters { get; set; }
+
+        public virtual IList<ConversationField> Fields { get; set; }
+
+        public virtual SocialUser LastMessageSender { get; set; }
     }
 }

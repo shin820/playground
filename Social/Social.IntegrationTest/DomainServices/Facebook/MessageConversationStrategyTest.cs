@@ -17,15 +17,15 @@ namespace Social.IntegrationTest.DomainServices.Facebook
         public async Task ShouldGetLatestMessageFromConversation()
         {
             MessageStrategy facebookService = DependencyResolver.Resolve<MessageStrategy>();
-            Message message = await FacebookService.GetLastMessageFromConversationId
+            FbMessage message = await FacebookService.GetLastMessageFromConversationId
                 (TestFacebookAccount.Token, "t_mid.$cAAdZrm4k4UZh9X1vd1bxDgkg7Bo9");
 
             Assert.NotNull(message);
-            Assert.NotNull(message.SocialId);
-            Assert.True(message.SenderId > 0);
-            Assert.NotNull(message.SenderSocialId);
-            Assert.NotNull(message.SenderEmail);
-            Assert.NotNull(message.FacebookConversationId);
+            Assert.NotEmpty(message.Id);
+            Assert.NotEmpty(message.SenderId);
+            Assert.NotEmpty(message.ReceiverId);
+            //Assert.NotNull(message.SenderEmail);
+            //Assert.NotNull(message.FacebookConversationId);
         }
     }
 }

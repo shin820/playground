@@ -26,7 +26,6 @@ namespace Social.Job.Jobs
 
         protected override Task ExecuteJob(IJobExecutionContext context)
         {
-            var a = 1;
             return Task.Run(() =>
              {
                  Console.WriteLine("11111");

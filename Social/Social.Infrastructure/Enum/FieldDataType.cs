@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Enum
 {
-    public enum ConversationPriority : short
+    public enum FieldDataType : short
     {
-        Low = 0,
-        Normal = 1,
-        High = 2,
-        Urgent = 3
+        String = 1,
+        Number = 2,
+        DateTime = 3,
+        Option = 4
     }
 }

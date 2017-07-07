@@ -16,49 +16,44 @@ namespace Social.Domain.Entities
         public Message()
         {
             Attachments = new List<MessageAttachment>();
-            Shares = new List<MessageShare>();
+            Children = new List<Message>();
         }
 
-        [Required]
         public int ConversationId { get; set; }
 
-        [Required]
-        public MessageType Type { get; set; }
+        public MessageSource Source { get; set; }
 
         [Required]
         public string SocialId { get; set; }
 
-        public bool? IsReplyComment { get; set; }
+        [MaxLength(500)]
+        public string SocialLink { get; set; }
 
-        public string ParentCommentId { get; set; }
+        public int? ParentId { get; set; }
 
         public DateTime SendTime { get; set; }
 
-        [Required]
         public int SenderId { get; set; }
 
-        [MaxLength(200)]
-        [Required]
+        [NotMapped]
         public string SenderSocialId { get; set; }
-
         [NotMapped]
         public string SenderEmail { get; set; }
 
-        public bool IsSendByAgent { get; set; }
-
-        public int? Agent { get; set; }
+        public int ReceiverId { get; set; }
 
         public string Content { get; set; }
-
-        [MaxLength(500)]
-        public string SocialUrl { get; set; }
-
-        public string FacebookConversationId { get; set; }
 
         public virtual Conversation Conversation { get; set; }
 
         public virtual IList<MessageAttachment> Attachments { get; set; }
 
-        public virtual IList<MessageShare> Shares { get; set; }
+        public virtual Message Parent { get; set; }
+
+        public virtual SocialUser Sender { get; set; }
+
+        public virtual SocialUser Receiver { get; set; }
+
+        public virtual IList<Message> Children { get; set; }
     }
 }

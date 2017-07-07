@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Enum
 {
-    public enum ConversationPriority : short
+    public enum ConditionRuleTriggerType : short
     {
-        Low = 0,
-        Normal = 1,
-        High = 2,
-        Urgent = 3
+        Any = 0,
+        All = 1,
+        LogicalExpression = 2
     }
 }

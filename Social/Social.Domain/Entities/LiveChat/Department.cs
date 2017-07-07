@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Social.Infrastructure.Enum
+namespace Social.Domain.Entities.LiveChat
 {
-    public enum SocialUserType : short
+    class Department
     {
-        Facebook = 0,
-        Twitter = 1
     }
 }

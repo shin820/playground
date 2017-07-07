@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Enum
 {
-    public enum ConversationStatus
+    public enum ConversationStatus : short
     {
         New = 0,
         PendingInternal = 1,
         PendingExternal = 2,
-        Deferred = 3,
+        OnHold = 3,
         Closed = 4
     }
 }

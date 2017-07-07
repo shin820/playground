@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Social.Infrastructure.Facebook
 {
-    public class FbChange
+    public class FbHookData
     {
-        public string Field { get; set; }
-        public FbChangeValue Value { get; set; }
+        public string Object { get; set; }
+        public List<FbHookDataEntry> Entry { get; set; }
     }
 }

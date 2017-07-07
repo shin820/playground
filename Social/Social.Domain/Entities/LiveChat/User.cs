@@ -7,16 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Social.Domain.Entities
+namespace Social.Domain.Entities.LiveChat
 {
-    [Table("t_Social_SocialUserInfo")]
-    public class SocialUserInfo : EntityWithSite
+    [Table("t_User")]
+    public class User : Entity, IShardingBySiteId
     {
         [Required]
-        [MaxLength(200)]
-        public string SocialId { get; set; }
+        [MaxLength(128)]
         public string Name { get; set; }
-        public string Avatar { get; set; }
-        public string Email { get; set; }
+
+        public short UserType { get; set; }
+
+        public bool IfActive { get; set; }
+
+        public bool IfDeleted { get; set; }
     }
 }
