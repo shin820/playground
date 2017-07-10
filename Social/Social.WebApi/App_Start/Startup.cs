@@ -1,5 +1,4 @@
-﻿using Framework.Authentication.OAuth;
-using Social.WebApi.App_Start;
+﻿using Social.WebApi.App_Start;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;

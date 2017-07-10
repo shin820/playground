@@ -337,10 +337,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Framework.Authentication\Framework.Authentication.csproj">
-      <Project>{167a344c-018e-427f-81cb-a99afcbdf2e0}</Project>
-      <Name>Framework.Authentication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj">
       <Project>{1d101296-5f63-46cf-ab35-4a72ea5a9c08}</Project>
       <Name>Framework.Core</Name>

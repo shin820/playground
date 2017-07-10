@@ -71,7 +71,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj">
+    <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
       <Project>{1d101296-5f63-46cf-ab35-4a72ea5a9c08}</Project>
       <Name>Framework.Core</Name>
     </ProjectReference>

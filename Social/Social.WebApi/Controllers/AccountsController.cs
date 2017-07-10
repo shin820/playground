@@ -1,5 +1,4 @@
-﻿using Framework.Authentication;
-using Social.WebApi.Models.Account;
+﻿using Social.WebApi.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -41,22 +40,22 @@ namespace Social.WebApi.Controllers
             return me;
         }
 
-        [HttpPost]
-        [Route("token")]
-        public string Authenticate(AuthenticationModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return "Invalid request!";
-            }
+        //[HttpPost]
+        //[Route("token")]
+        //public string Authenticate(AuthenticationModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return "Invalid request!";
+        //    }
 
-            //todo, validate user name and secret
-            ClaimsIdentity claimsIdentity = TestClaimsIdentity.Create();
-            var ticket = new AuthenticationTicket(claimsIdentity, new AuthenticationProperties());
-            ticket.Properties.IssuedUtc = DateTime.UtcNow;
-            ticket.Properties.ExpiresUtc = DateTime.UtcNow.Add(TimeSpan.FromMinutes(30));
+        //    //todo, validate user name and secret
+        //    ClaimsIdentity claimsIdentity = TestClaimsIdentity.Create();
+        //    var ticket = new AuthenticationTicket(claimsIdentity, new AuthenticationProperties());
+        //    ticket.Properties.IssuedUtc = DateTime.UtcNow;
+        //    ticket.Properties.ExpiresUtc = DateTime.UtcNow.Add(TimeSpan.FromMinutes(30));
 
-            return OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
-        }
+        //    return OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+        //}
     }
 }
