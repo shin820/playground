@@ -62,6 +62,7 @@
     <Compile Include="DomainService.cs" />
     <Compile Include="Exception\ExceptionWithCode.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="IDomainService.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityWithSite.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Entities\IHaveModification.cs" />
     <Compile Include="Entities\IHaveSiteId.cs" />
     <Compile Include="Entities\IShardingBySiteId.cs" />
+    <Compile Include="MimeTypeMap.cs" />
     <Compile Include="OAuth\ApplicationTypes.cs" />
     <Compile Include="Checker.cs" />
     <Compile Include="OAuth\IOAuthClientStore.cs" />
