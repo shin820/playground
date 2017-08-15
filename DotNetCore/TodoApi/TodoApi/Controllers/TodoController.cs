@@ -42,7 +42,27 @@ namespace TodoApi.Controllers
             return new ObjectResult(item);
         }
 
+        /// <summary>
+        /// Creates a TodoItem.
+        /// </summary>
+        /// <remarks>
+        /// Note that the key is a GUID and not an integer.
+        ///  
+        ///     POST /Todo
+        ///     {
+        ///        "key": "0e7ad584-7788-4ab1-95a6-ca0a5b444cbb",
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        /// 
+        /// </remarks>
+        /// <param name="item"></param>
+        /// <returns>New Created Todo Item</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
         [HttpPost]
+        [ProducesResponseType(typeof(TodoItem), 201)]
+        [ProducesResponseType(typeof(TodoItem), 400)]
         public IActionResult Post([FromBody]TodoItem item)
         {
             if (item == null)
@@ -79,6 +99,10 @@ namespace TodoApi.Controllers
             return new NoContentResult();
         }
 
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
