@@ -14,6 +14,8 @@ namespace TodoApi.Models
         [Required]
         public string Name { get; set; }
 
+        public string Notes { get; set; }
+
         [DefaultValue(false)]
         public bool IsComplete { get; set; }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TodoApi.Models;
+using TodoApi.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,28 +13,23 @@ namespace TodoApi.Controllers
     [Route("api/[controller]")]
     public class TodoController : Controller
     {
-        private readonly TodoContext _context;
+        private readonly IToDoRepository _todoRepo;
 
-        public TodoController(TodoContext context)
+        public TodoController(IToDoRepository todoRepo)
         {
-            _context = context;
-            if (_context.TodoItems.Count() == 0)
-            {
-                _context.TodoItems.Add(new TodoItem { Name = "Item1" });
-                _context.SaveChanges();
-            }
+            _todoRepo = todoRepo;
         }
 
         [HttpGet]
         public IEnumerable<TodoItem> GetAll()
         {
-            return _context.TodoItems.ToList();
+            return _todoRepo.All;
         }
 
         [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetById(long id)
         {
-            var item = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            var item = _todoRepo.Find(id);
             if (item == null)
             {
                 return NotFound();
@@ -65,13 +61,12 @@ namespace TodoApi.Controllers
         [ProducesResponseType(typeof(TodoItem), 400)]
         public IActionResult Post([FromBody]TodoItem item)
         {
-            if (item == null)
+            if (item == null || !ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            _context.TodoItems.Add(item);
-            _context.SaveChanges();
+            _todoRepo.Insert(item);
 
             return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
         }
@@ -79,24 +74,20 @@ namespace TodoApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(long id, [FromBody]TodoItem item)
         {
-            if (item == null || item.Id != id)
+            if (item == null || !ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == item.Id);
+            var todo = _todoRepo.Find(id);
             if (todo == null)
             {
                 return NotFound();
             }
 
-            todo.IsComplete = item.IsComplete;
-            todo.Name = item.Name;
+            _todoRepo.Update(item);
 
-            _context.TodoItems.Update(todo);
-            _context.SaveChanges();
-
-            return new NoContentResult();
+            return NoContent();
         }
 
         /// <summary>
@@ -106,14 +97,13 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            var todo = _todoRepo.Find(id);
             if (todo == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todo);
-            _context.SaveChanges();
+            _todoRepo.Delete(id);
             return new NoContentResult();
         }
     }

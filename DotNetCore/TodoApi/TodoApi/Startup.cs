@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using TodoApi.Interfaces;
+using TodoApi.Services;
 
 namespace TodoApi
 {
@@ -30,6 +32,8 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoDB"));
             services.AddMvc();
+
+            services.AddTransient<IToDoRepository, ToDoRepository>();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
